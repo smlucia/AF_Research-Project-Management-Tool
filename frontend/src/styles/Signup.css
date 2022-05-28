@@ -1,0 +1,29 @@
+.signup-component{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
+}
+
+.signupForm{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
+}
+
+.signupFormHeader{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+}
+
+.signupLink{
+    cursor: pointer;
+}
+
+.signupBtn{
+    background-color: darkblue;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 7px 25px;
+    cursor: pointer;
+}
