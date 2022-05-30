@@ -13,8 +13,8 @@ import Marking from './components/admin/MarkingSchemePage'
 
 
 import  './App.css'
-import HomePage from './components/HomePage.js'
-import LoginAndSignup from './container/loginAndSignup';
+//import HomePage from './components/HomePage.js'
+//import LoginAndSignup from './container/loginAndSignup';
 
 
 const App = () => {
@@ -40,7 +40,7 @@ const App = () => {
         
 
         {/* <div className='app'></div> */}
-        <LoginAndSignup />
+        {/* <LoginAndSignup /> */}
 
         </>
     )
