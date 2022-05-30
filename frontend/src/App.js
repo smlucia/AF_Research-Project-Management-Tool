@@ -1,4 +1,5 @@
 import React from 'react';
+
 import  './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 //import HomePage from './components/HomePage.js';
@@ -11,9 +12,15 @@ import Marking from './components/admin/MarkingSchemePage'
 
 
 
+import  './App.css'
+import HomePage from './components/HomePage.js'
+import LoginAndSignup from './container/loginAndSignup';
+
+
 const App = () => {
     return(
         <>
+
        
         <Router>
             {/* <HomePage /> */}
@@ -31,6 +38,10 @@ const App = () => {
 
         </Router>
         
+
+        {/* <div className='app'></div> */}
+        <LoginAndSignup />
+
         </>
     )
 }

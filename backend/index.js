@@ -18,7 +18,7 @@ mongoose.connect("mongodb+srv://user_1212:user123123@clusterno1.1hpvx.mongodb.ne
 
 const connection = mongoose.connection;
 connection.once('open', () => {
-    console.log('MongoDB databse successfully connected. ');
+    console.log('MongoDB database successfully connected. ');
 })
 
 
