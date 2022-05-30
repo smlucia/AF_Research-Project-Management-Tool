@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AdminHome from './components/admin/AdminHome';
 import NavBar from './components/admin/AdminNavBar';
 import Marking from './components/admin/MarkingSchemePage'
+import Template from './components/admin/TemplatePage'
 
 
 
@@ -33,6 +34,7 @@ const App = () => {
             <Route path="adhome" element={ <AdminHome/> } />
             <Route path="nav" element={ <NavBar/> } />
             <Route path="mark" element={ <Marking/> } />
+            <Route path="temp" element={ <Template/> } />
             
             </Routes>
 

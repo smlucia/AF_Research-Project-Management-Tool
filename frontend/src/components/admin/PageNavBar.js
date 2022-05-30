@@ -12,8 +12,8 @@ const PageNavBar = () => {
                     <div className="logo">Admin Dashboard</div>
                     <ul className="nav-links">
                         <li><a href="/mark">Marking Schemes</a></li>
-                        <li><a>Templates</a></li>
-                        <li><a>Submissions</a></li>
+                        <li><a href="/temp">Templates</a></li>
+                        <li><a href="/">Submissions</a></li>
                         {/* <li><a>SignUp</a></li> */}
                     </ul>
                 
