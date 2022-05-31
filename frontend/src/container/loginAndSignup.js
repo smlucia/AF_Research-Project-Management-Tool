@@ -12,7 +12,7 @@ const loginAndSignup = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-    const loginAndSignupStyle = {width:400, margin:"20px auto"}
+    const loginAndSignupStyle = {width:350, margin:"20px auto"}
     function TabPanel(props) {
         const { children, value, index, ...other } = props;
 
