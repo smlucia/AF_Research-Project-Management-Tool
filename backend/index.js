@@ -1,23 +1,21 @@
-const express =  require("express");
-const mongoose =  require("mongoose");
-const bodyparser = require("body-parser");
-
+require("dotenv").config();
+const express = require("express");
 const app = express();
-app.use(bodyparser.json());
+const cors = require("cors");
+const connection = require("./db");
+const userRoute = require("./routes/userRoute");
+const authRoute = require("./routes/authRoute");
 
+// database connection
+connection();
 
-mongoose.connect("mongodb+srv://user_1212:user123123@clusterno1.1hpvx.mongodb.net/rpmt_db?retryWrites=true&w=majority");
+// middlewares
+app.use(express.json());
+app.use(cors());
 
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log('MongoDB database successfully connected. ');
-})
+// routes
+app.use("/users", userRoute);
+app.use("/auth", authRoute);
 
-//add routes here
-
-app.get("/" , (req, res) => {
-    res.send({Project :" MernCrud"})
-});
-
-const PORT = process.env.PORT || 5005;
-app.listen(PORT);
+const port = process.env.PORT || 5005;
+app.listen(port, console.log(`Listening on port ${port}...`));
