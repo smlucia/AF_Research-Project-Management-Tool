@@ -1,7 +1,8 @@
 const MarkingschemeSinglefile = require('../models/singlefile');
 const MarkingschemeMultipleFiles = require('../models/multiplefiles');
+const TemplateMultipleFiles = require('../models/multipletemplatefiles');
 
-
+//single marking scheme upload
 const singleFileUpload = async(req , res , next) => {
     try{
         const file = new MarkingschemeSinglefile({
@@ -20,7 +21,7 @@ const singleFileUpload = async(req , res , next) => {
 };
 
 
-//to upload multiple files
+//multiple marking schemes upload
 const multipleFileUpload = async(req , res, next) =>{
 
     try{
@@ -46,6 +47,7 @@ const multipleFileUpload = async(req , res, next) =>{
     }
 }
 
+//get all single marking schemes
 const getallSingleFiles = async(req , res, next) => {
     try{
         const files = await MarkingschemeSinglefile.find();
@@ -56,6 +58,7 @@ const getallSingleFiles = async(req , res, next) => {
     }
 }
 
+//get all multiple marking schemes
 const getallMultipleFiles = async(req , res, next) => {
     try{
         const files = await MarkingschemeMultipleFiles.find();
@@ -65,6 +68,48 @@ const getallMultipleFiles = async(req , res, next) => {
         res.status(400).send(error.message);
     }
 }
+
+
+//multiple template files upload
+const multipleTemplateFileUpload = async(req , res, next) =>{
+
+    try{
+        let filesArray = [];
+        req.files.forEach(element => {
+            const file ={
+                fileName: element.originalname,
+                filePath: element.path,
+                fileType: element.mimetype,
+                fileSize: fileSizeFomatter(element.size , 2) //0.00
+            }
+            filesArray.push(file);
+            
+        });
+        const multipleTemplateFiles = new TemplateMultipleFiles({
+            title: req.body.title,
+            files: filesArray
+        });
+        await multipleTemplateFiles.save();
+        res.status(201).send('Files Uploaded Successfully');
+    }catch(error){
+        res.status(400).send(error.message);
+    }
+}
+
+//get all multiple marking schemes
+const getallTemplateMultipleFiles = async(req , res, next) => {
+    try{
+        const files = await TemplateMultipleFiles.find();
+        res.status(200).send(files);
+
+    }catch(error){
+        res.status(400).send(error.message);
+    }
+}
+
+
+
+
 
 const fileSizeFomatter = (bytes , decimal) => {
     if(bytes == 0){
@@ -77,9 +122,12 @@ const fileSizeFomatter = (bytes , decimal) => {
 
 }
 
+
 module.exports = {
     singleFileUpload,
     multipleFileUpload,
     getallSingleFiles,
-    getallMultipleFiles
+    getallMultipleFiles,
+    multipleTemplateFileUpload,
+    getallTemplateMultipleFiles
 }
