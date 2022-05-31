@@ -7,6 +7,7 @@ const Main = () => {
 		window.location.reload();
 	};
 
+	//return statement
 	return (
 		<div className={styles.main_container}>
 			<nav className={styles.navbar}>
