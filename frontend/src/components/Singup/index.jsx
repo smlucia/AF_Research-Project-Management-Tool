@@ -10,6 +10,9 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 const Signup = () => {
+	//signup interface modification
+	const signupAvatarStyle = { backgroundColor: '#3bb19b' }
+
 	const [data, setData] = useState({
 		firstName: "",
 		lastName: "",
@@ -51,6 +54,10 @@ const Signup = () => {
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
+					<Avatar
+						style={signupAvatarStyle}
+						sx={{ width: 125, height: 125 }}>
+					</Avatar>
 					<h1>Welcome Back</h1>
 					<Link to="/login">
 						<button type="button" className={styles.white_btn}>
@@ -98,20 +105,20 @@ const Signup = () => {
 							className={styles.input}
 						/>
 						<FormControl>
-						<FormLabel id="demo-radio-buttons-group-label">User Type</FormLabel>
-						<RadioGroup
-							aria-labelledby="demo-radio-buttons-group-label"
-							defaultValue="student"
-							name="radio-buttons-group"
-							value={data.userType}
-							onChange={handleChangeForRadio}
-							style={{ display: 'initial' }}
-						>
-							<FormControlLabel value="student" control={<Radio />} label="Student" />
-							<FormControlLabel value="staff" control={<Radio />} label="Staff" />
-						</RadioGroup>
+							<FormLabel id="demo-radio-buttons-group-label">User Type</FormLabel>
+							<RadioGroup
+								aria-labelledby="demo-radio-buttons-group-label"
+								defaultValue="student"
+								name="radio-buttons-group"
+								value={data.userType}
+								onChange={handleChangeForRadio}
+								style={{ display: 'initial' }}
+							>
+								<FormControlLabel value="student" control={<Radio />} label="Student" />
+								<FormControlLabel value="staff" control={<Radio />} label="Staff" />
+							</RadioGroup>
 						</FormControl>
-						
+
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
 							Sign Up

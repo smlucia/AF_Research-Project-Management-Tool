@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 
 const Login = () => {
+	//login interface modification
+	const loginAvatarStyle = { backgroundColor: '#3bb19b' }
+
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
 
@@ -63,6 +66,10 @@ const Login = () => {
 					</form>
 				</div>
 				<div className={styles.right}>
+					<Avatar
+						style={loginAvatarStyle}
+						sx={{ width: 125, height: 125 }}>
+					</Avatar>
 					<h1>New Here ?</h1>
 					<Link to="/signup">
 						<button type="button" className={styles.white_btn}>
