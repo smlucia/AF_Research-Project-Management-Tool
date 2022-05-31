@@ -21,7 +21,12 @@
     "react-circular-progressbar": "^2.0.4",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
+<<<<<<< HEAD
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^2.1.4"
+=======
     "react-scripts": "^5.0.1"
+>>>>>>> c387a0ec7cbb02a516e570efae8ccd1844105892
   },
   "browserslist": {
     "production": [
