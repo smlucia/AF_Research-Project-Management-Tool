@@ -35,7 +35,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:6005/users";
+			const url = "http://localhost:5005/users";
 			const { data: res } = await axios.post(url, data);
 			navigate("/login");
 			console.log(res.message);
@@ -61,7 +61,7 @@ const Signup = () => {
 					<h1>Welcome Back</h1>
 					<Link to="/login">
 						<button type="button" className={styles.white_btn}>
-							SIGN IN
+							Sign in
 						</button>
 					</Link>
 				</div>
@@ -121,7 +121,7 @@ const Signup = () => {
 
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							SIGN UP
+							Sign Up
 						</button>
 					</form>
 				</div>
