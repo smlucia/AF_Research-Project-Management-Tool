@@ -18,7 +18,7 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:5005/auth";
+			const url = "http://localhost:6005/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
 			localStorage.setItem("username", res.username);
@@ -61,7 +61,7 @@ const Login = () => {
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sign In
+							SIGN IN
 						</button>
 					</form>
 				</div>
@@ -73,7 +73,7 @@ const Login = () => {
 					<h1>New Here ?</h1>
 					<Link to="/signup">
 						<button type="button" className={styles.white_btn}>
-							Sign Up
+							SIGN UP
 						</button>
 					</Link>
 				</div>
