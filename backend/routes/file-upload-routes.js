@@ -2,7 +2,7 @@
 
 const express = require("express");
 const {upload} = require("../helpers/filehelper");
-const {singleFileUpload , multipleFileUpload, getallSingleFiles , getallMultipleFiles , multipleTemplateFileUpload, getallTemplateMultipleFiles} = require("../controllers/fileuploaderController");
+const {singleFileUpload , multipleFileUpload, getallSingleFiles , getallMultipleFiles , multipleTemplateFileUpload, getallTemplateMultipleFiles , singleMarkingSchemeDownload} = require("../controllers/fileuploaderController");
 const router = express.Router();
 
 //upload single file
@@ -17,6 +17,8 @@ router.get('/getMultipleFiles',getallMultipleFiles);
 router.post('/multipleTempFiles', upload.array('files'),multipleTemplateFileUpload);
 //get all multiple files
 router.get('/getMultipleTempFiles',getallTemplateMultipleFiles);
+//download all multiple files
+router.get('/downloadSingleMarkingFiles/:_id',singleMarkingSchemeDownload);
 
 
 module.exports = {

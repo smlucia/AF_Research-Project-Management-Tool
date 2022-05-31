@@ -38,9 +38,11 @@ const MarkingSchemePage = () => {
     return (
         <>
             <Navbar / >
-            <div className='main' style={{
-               marginLeft: "170px", /* Same as the width of the sidebar */
-               padding: "20px 10px"
+            <div className='main'
+             style={{
+               marginLeft: "130px", /* Same as the width of the sidebar */
+               padding: "20px 10px",
+               
             }}>
             <MarkingSchemeUpload getSingle= {() => getSingleFilesList()} getMultiple= {() => getMultipleFilesList()}/>
        

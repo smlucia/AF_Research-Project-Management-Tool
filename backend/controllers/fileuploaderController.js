@@ -1,6 +1,7 @@
 const MarkingschemeSinglefile = require('../models/singlefile');
 const MarkingschemeMultipleFiles = require('../models/multiplefiles');
 const TemplateMultipleFiles = require('../models/multipletemplatefiles');
+const path = require("path");
 
 //single marking scheme upload
 const singleFileUpload = async(req , res , next) => {
@@ -122,6 +123,35 @@ const fileSizeFomatter = (bytes , decimal) => {
 
 }
 
+const singleMarkingSchemeDownload = async (req , res) => {
+    try{
+        const file = await MarkingschemeSinglefile.findById(req.params._id);
+        res.set({
+            'Content-Type': file.file.mimetype
+          });
+          res.status(200).sendFile(path.join(__dirname, '..', file.file.path));
+       //res.status(200).send(file);
+
+    }catch(error){
+        //res.status(400).send(error.message);
+        res.status(400).send('Error while downloading file. Try again later.');
+    }
+
+}
+
+
+// Router.get('/download/:id', async (req, res) => {
+//     try {
+//       const file = await File.findById(req.params.id);
+//       res.set({
+//         'Content-Type': file.file_mimetype
+//       });
+//       res.sendFile(path.join(__dirname, '..', file.file_path));
+//     } catch (error) {
+//       res.status(400).send('Error while downloading file. Try again later.');
+//     }
+//   });
+
 
 module.exports = {
     singleFileUpload,
@@ -129,5 +159,6 @@ module.exports = {
     getallSingleFiles,
     getallMultipleFiles,
     multipleTemplateFileUpload,
-    getallTemplateMultipleFiles
+    getallTemplateMultipleFiles,
+    singleMarkingSchemeDownload
 }
