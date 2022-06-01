@@ -23,7 +23,16 @@ const Login = () => {
 			localStorage.setItem("token", res.data);
 			localStorage.setItem("username", res.username);
 			localStorage.setItem("usertype", res.usertype);
-			window.location = "/";
+			
+			//handle dashboard navigation according to the user role
+			if (res.usertype === 'student'){
+				window.location = "/studentDashboard";
+			} else if (res.usertype === 'staff')  {
+				window.location = "/staffDashboard";
+			} else {
+				window.location = "/";
+			}
+
 		} catch (error) {
 			if (
 				error.response &&
