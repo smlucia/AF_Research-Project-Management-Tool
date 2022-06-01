@@ -1,0 +1,26 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "AF project(supervisor)",
+    "main": "index.js ",
+    "scripts": {
+        "start": "node index",
+        "dev": "nodemon index"
+    },
+    "keywords": [],
+    "author": "Pathirana P.M.M",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.1",
+        "express": "^4.18.1",
+        "moment": "^2.29.3",
+        "mongoose": "^6.3.4",
+        "socket.io": "^4.5.1",
+        "validator": "^13.7.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.16"
+    }
+}
