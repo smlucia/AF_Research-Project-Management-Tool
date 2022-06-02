@@ -8,6 +8,8 @@ import Main from "./components/Main";
 import Signup from "./components/Singup";
 import Login from "./components/Login";
 
+import HomePage from './components/HomePage.js';
+
 //student route imports
 import StudentDashboard from "./components/Student/studentDashboard";
 import StaffDashboard from "./components/Staff/staffDashboard";
@@ -18,10 +20,10 @@ import StudentDownloadTemplate from "./components/Student/studentDownloadTemplat
 import StudentSubmitDocument from "./components/Student/studentSubmitDocument";
 
 //admin route imports
-// import AdminHome from './components/admin/AdminHome';
-// import NavBar from './components/admin/AdminNavBar';
-// import Marking from './components/admin/MarkingSchemePage';
-// import Template from './components/admin/TemplatePage';
+import AdminHome from './components/admin/AdminHome';
+import NavBar from './components/admin/AdminNavBar';
+import Marking from './components/admin/MarkingSchemePage';
+import Template from './components/admin/TemplatePage';
 import PanelMember from './components/panelMember/panelMember';
 import ApproveResearch from './components/panelMember/approveResearch';
 import Grade from './components/panelMember/grade';
@@ -49,8 +51,6 @@ import Grade from './components/panelMember/grade';
 //         </Routes>
 //     );
 
-//import HomePage from './components/HomePage.js';
-//import HomePage from './components/HomePage.js'
 //import LoginAndSignup from './container/loginAndSignup';
 
 
