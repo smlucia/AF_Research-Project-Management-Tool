@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
 
+
 const userSchema = new mongoose.Schema({
 	firstName: { 
         type: String, 
@@ -15,6 +16,10 @@ const userSchema = new mongoose.Schema({
 	email: { 
         type: String, 
         required: true 
+    },
+	mobile: {
+        type: Number, 
+        required: true
     },
 	password: { 
         type: String, 
@@ -40,6 +45,7 @@ const validate = (data) => {
 		firstName: Joi.string().required().label("First Name"),
 		lastName: Joi.string().required().label("Last Name"),
 		email: Joi.string().email().required().label("Email"),
+		mobile: Joi.number().required().label("Contact Number"),
 		password: passwordComplexity().required().label("Password"),
 		userType: Joi.string().required().label("User Type"),
 	});

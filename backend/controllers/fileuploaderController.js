@@ -39,6 +39,8 @@ const multipleFileUpload = async(req , res, next) =>{
         });
         const multipleFiles = new MarkingschemeMultipleFiles({
             title: req.body.title,
+            submitTo: req.body.submitTo,
+            submitFrom: req.body.submitFrom,
             files: filesArray
         });
         await multipleFiles.save();

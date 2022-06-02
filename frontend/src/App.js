@@ -1,62 +1,62 @@
-<<<<<<< HEAD
-import { Route, Routes, Navigate } from "react-router-dom";
+
+import {  Routes, Route ,Navigate} from "react-router-dom";
+import React from 'react';
 import Main from "./components/Main";
 import Signup from "./components/Singup";
 import Login from "./components/Login";
-
-function App() {
-	const user = localStorage.getItem("token");
-
-	return (
-		<Routes>
-			{user && <Route path="/" exact element={<Main />} />}
-			<Route path="/signup" exact element={<Signup />} />
-			<Route path="/login" exact element={<Login />} />
-			<Route path="/" element={<Navigate replace to="/login" />} />
-		</Routes>
-	);
-=======
-import React from 'react';
-
+//import HomePage from './components/HomePage.js';
 import  './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-//import HomePage from './components/HomePage.js';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 //admin route imports
 import AdminHome from './components/admin/AdminHome';
 import NavBar from './components/admin/AdminNavBar';
 import Marking from './components/admin/MarkingSchemePage'
-import Template from './components/admin/TemplatePage'
-
-
-
-import  './App.css'
-//import HomePage from './components/HomePage.js'
-//import LoginAndSignup from './container/loginAndSignup';
+import Template from './components/admin/TemplatePage';
+import StudentList from './components/users/StudentList';
+import EditStudent from './components/users/StudentEdit';
+import StaffList from './components/users/StaffList';
+import EditStaff from './components/users/StaffEdit';
+import ViewUser from './components/users/ViewUser';
+import AddSub from './components/admin/AddSubmission';
+import SubList from './components/admin/SubmissionList';
+import EditSub from './components/admin/EditSubmission';
 
 
 const App = () => {
+    const user = localStorage.getItem("token");
     return(
         <>
 
        
-        <Router>
+       
             {/* <HomePage /> */}
 
             <Routes>
             {/* <Route path="/" element={ <Home/> } />
             <Route path="about" element={ <About/> } /> */}
 
+            {user && <Route path="/" exact element={<Main />} />}
+			<Route path="/signup" exact element={<Signup />} />
+			<Route path="/login" exact element={<Login />} />
+			<Route path="/" element={<Navigate replace to="/login" />} />
+
             {/* admin routes */}
             <Route path="adhome" element={ <AdminHome/> } />
             <Route path="nav" element={ <NavBar/> } />
             <Route path="mark" element={ <Marking/> } />
             <Route path="temp" element={ <Template/> } />
-            
+            <Route path="stulist" element={ <StudentList/> } />
+            <Route path="stuedit/:id" element={ <EditStudent/> } />
+            <Route path="stafflist" element={ <StaffList/> } />
+            <Route path="staffedit/:id" element={ <EditStaff/> } />
+            <Route path="userview/:id" element={ <ViewUser/> } />
+            <Route path="addsub" element={ <AddSub/> } />
+            <Route path="sublist" element={ <SubList/> } />
+            <Route path="subedit/:id" element={ <EditSub/> } />
             </Routes>
 
-        </Router>
+        
         
 
         {/* <div className='app'></div> */}
@@ -64,7 +64,7 @@ const App = () => {
 
         </>
     )
->>>>>>> c387a0ec7cbb02a516e570efae8ccd1844105892
+
 }
 
 export default App;

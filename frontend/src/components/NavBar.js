@@ -11,10 +11,10 @@ const NavBar = () => {
                 <ul className="nav-links" style={{
                     transform: open ? "translateX(0px)" : ""
                 }}>
-                    <li><a>Home</a></li>
+                    <li><a >Home</a></li>
                     <li><a>Contact Us</a></li>
-                    <li><a>SignIn</a></li>
-                    <li><a>SignUp</a></li>
+                    <li><a href="/login">SignIn</a></li>
+                    <li><a href="/signup">SignUp</a></li>
                 </ul>
                 <i onClick={() => setOpen(!open)} className="fa-solid fa-bars menu"></i>
             </nav>

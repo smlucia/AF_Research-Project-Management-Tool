@@ -17,6 +17,7 @@ const Signup = () => {
 		firstName: "",
 		lastName: "",
 		email: "",
+		mobile:"",
 		password: "",
 		userType: "student",
 	});
@@ -86,12 +87,22 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
+						
 						<input
 							type="email"
 							placeholder="Email"
 							name="email"
 							onChange={handleChange}
 							value={data.email}
+							required
+							className={styles.input}
+						/>
+						<input
+							type="tel"
+							placeholder="Contact Number"
+							name="mobile"
+							onChange={handleChange}
+							value={data.mobile}
 							required
 							className={styles.input}
 						/>
@@ -115,7 +126,9 @@ const Signup = () => {
 								style={{ display: 'initial' }}
 							>
 								<FormControlLabel value="student" control={<Radio />} label="Student" />
-								<FormControlLabel value="staff" control={<Radio />} label="Staff" />
+								<FormControlLabel value="supervisor" control={<Radio />} label="Supervisor" />
+								<FormControlLabel value="coSupervisor" control={<Radio />} label="Co-Supervisor" />
+								<FormControlLabel value="panelmember" control={<Radio />} label="Panel Member" />
 							</RadioGroup>
 						</FormControl>
 
