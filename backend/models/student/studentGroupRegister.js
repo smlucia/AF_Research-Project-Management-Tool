@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const studentGroupsSchema = new Schema({
+    groupId: {
+        type: String,
+        required: true
+    },
     groupName: {
         type: String,
         required: true
@@ -11,7 +15,20 @@ const studentGroupsSchema = new Schema({
         type: String,
         required: true
     },
-    members: [Object]
+    leaderEmail: {
+        type: String,
+        required: true
+    },
+    otherMembers: [
+        {
+            name: String,
+            email: String
+        }
+    ],
+    academicYear: {
+        type: Number,
+        required: true
+    },
    
 }, {timestamps: true});
 

@@ -7,10 +7,6 @@ import Typography from '@mui/material/Typography';
 //import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 const studentDashboard = () => {
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        window.location.reload();
-    };
 
     const images = [
         {
@@ -113,21 +109,26 @@ const studentDashboard = () => {
         transition: theme.transitions.create('opacity'),
     }));
 
+    const handleLogout = () => {
+		localStorage.removeItem("token");
+		window.location="/";
+	};
+
     const imageButtonHandling = () => {
 
         if(images.title = 'STUDENT GROUP') {
             window.location = "/studentGroup";
 
-        }if (images.title = 'RESEARCH TOPICS'){
+        }else if (images.title = 'RESEARCH TOPICS'){
             window.location = "/studentResearchTopics";
 
-        }if (images.title = 'SUBMIT DOCUMENTS'){
+        }else if (images.title = 'SUBMIT DOCUMENTS'){
             window.location = "/studentSubmitDocument";
 
-        }if (images.title = 'DOWNLOAD TEMPLATE'){
+        }else if (images.title = 'DOWNLOAD TEMPLATE'){
             window.location = "/studentDownloadTemplate";
 
-        }if (images.title = 'REQUEST SUPERVISORS'){
+        }else if (images.title = 'REQUEST SUPERVISORS'){
             window.location = "/studentRequestSupervisor";
 
         }else{

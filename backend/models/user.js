@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
+	mobile: {
+		type: Number,
+		required: true
+	},
 	password: { 
         type: String, 
         required: true 
@@ -40,6 +44,7 @@ const validate = (data) => {
 		firstName: Joi.string().required().label("First Name"),
 		lastName: Joi.string().required().label("Last Name"),
 		email: Joi.string().email().required().label("Email"),
+		mobile: Joi.number().required().label("Contact Number"),
 		password: passwordComplexity().required().label("Password"),
 		userType: Joi.string().required().label("User Type"),
 	});
