@@ -10,6 +10,7 @@ import AdminHome from './components/admin/AdminHome';
 import NavBar from './components/admin/AdminNavBar';
 import Marking from './components/admin/MarkingSchemePage'
 import Template from './components/admin/TemplatePage'
+import PanelMember from './components/panelMember/panelMember';
 
 
 
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="nav" element={ <NavBar/> } />
             <Route path="mark" element={ <Marking/> } />
             <Route path="temp" element={ <Template/> } />
+            <Route path="panelmember" element={<PanelMember/>} />
             
             </Routes>
 
