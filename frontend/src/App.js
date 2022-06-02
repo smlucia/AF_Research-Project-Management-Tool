@@ -11,7 +11,8 @@ import NavBar from './components/admin/AdminNavBar';
 import Marking from './components/admin/MarkingSchemePage'
 import Template from './components/admin/TemplatePage'
 import PanelMember from './components/panelMember/panelMember';
-
+import ApproveResearch from './components/panelMember/approveResearch';
+import Grade from './components/panelMember/grade';
 
 
 import  './App.css'
@@ -37,7 +38,8 @@ const App = () => {
             <Route path="mark" element={ <Marking/> } />
             <Route path="temp" element={ <Template/> } />
             <Route path="panelmember" element={<PanelMember/>} />
-            
+            <Route path="panelmember/approve-research" element={<ApproveResearch/>} />
+            <Route path="panelmember/grade" element={<Grade/>} />
             </Routes>
 
         </Router>
