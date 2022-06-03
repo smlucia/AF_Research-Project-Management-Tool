@@ -7,6 +7,14 @@ const markingSchemeMultipleFilesSchema = new Schema({
         type: String,
         required: true
     },
+    submitTo: {
+        type: String,
+        required: true
+    },
+    submitFrom: {
+        type: String,
+        required: true
+    },
     files: [Object]
    
 }, {timestamps: true});

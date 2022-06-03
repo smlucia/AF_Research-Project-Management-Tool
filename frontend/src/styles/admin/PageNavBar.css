@@ -18,14 +18,14 @@ nav {
     justify-content: space-around;
     min-height: 12vh;
     align-items: center;
-    background-color: #23b22d;
+    background-color: #2f347b;
     
 }
 
 nav .nav-links {
     display: flex;
     justify-content: space-around;
-    width: 35%;
+    width: 40%;
    
 }
 
@@ -41,14 +41,14 @@ nav .nav-links a:hover{
     color: black;
 }
 
-.sidenav {
+/* .sidenav {
     height: 100%;
-    width: 150px;
+    width: 130px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #23adb2;
+    background-color: #2f347b;
     overflow-x: hidden;
     padding-top: 130px;
   }
@@ -72,4 +72,4 @@ nav .nav-links a:hover{
     .sidenav a {font-size: 18px;}
   }
 
-  
+   */

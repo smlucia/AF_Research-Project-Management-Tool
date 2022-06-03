@@ -10,6 +10,8 @@ const MarkingSchemeUpload = (props) => {
   const[singleFile , setSingleFile] = useState('');
   const[multipleFiles , setMultipleFiles] = useState('');
   const[title , setTitle] = useState('');
+  const[submitTo , setSubmitTo] = useState('');
+  const[submitFrom , setSubmitFrom] = useState('');
   const[singleProgress , setSingleProgress] = useState(0);
   const[multipleProgress , setMultipleProgress] = useState(0);
  
@@ -47,6 +49,8 @@ const MarkingSchemeUpload = (props) => {
   const UploadMultipleFile = async () => {
     const formData = new FormData();
     formData.append('title',title );
+    formData.append('submitTo',submitTo );
+    formData.append('submitFrom',submitFrom );
     for (let i = 0; i < multipleFiles.length; i++) {
       formData.append('files',multipleFiles[i] );
       
@@ -54,8 +58,14 @@ const MarkingSchemeUpload = (props) => {
    
     await multipleFilesUpload(formData ,multipleFileOptions);
     props.getMultiple();
+
+   
     
   }
+  const resetinputs = async () => {
+    props.reset();
+      
+    }
 
  
 
@@ -102,10 +112,34 @@ const MarkingSchemeUpload = (props) => {
              
 
             
-              <div className="row mt-3">
+              <div className="row mt-3 row-cols-2 gy-4">
                 <div className="col-6">
                   <h5><label>Title</label></h5>
                   <input type="text" onChange={(e) => setTitle(e.target.value)} placeholder='Enter Title....' className='form-control form-control-lg' />
+                </div>
+                <div className="col-6">
+                  <h5><label>Submit To</label></h5>
+                  <select onChange={(e) => setSubmitTo(e.target.value)} class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">            
+                  <option hidden >Select user role</option>
+                      <option value="student">Student</option>
+                      <option value="supervisor">Supervisor</option>
+                      <option value="coSupervisor">Co-Supervisor</option>
+                      <option value="panelmember">panelmember</option>
+                      
+                  </select>
+                  {/* <input type="text" onChange={(e) => setSubmitTo(e.target.value)} placeholder='Enter user role..' className='form-control form-control-lg' /> */}
+                </div>
+                <div className="col-6">
+                  <h5><label>Submit From</label></h5>
+                  <select onChange={(e) => setSubmitFrom(e.target.value)} class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">            
+                  <option hidden >Select user role</option>
+                      <option value="student">Student</option>
+                      <option value="supervisor">Supervisor</option>
+                      <option value="coSupervisor">Co-Supervisor</option>
+                      <option value="panelmember">panelmember</option>
+                      
+                  </select>
+                  {/* <input type="text" onChange={(e) => setSubmitFrom(e.target.value)} placeholder='Enter user role..' className='form-control form-control-lg' /> */}
                 </div>
                 <div className="col-6">
                     <div className='form-group'>
@@ -135,6 +169,12 @@ const MarkingSchemeUpload = (props) => {
 
 
                     })} />
+                  </div>
+              </div>
+
+              <div className="row">
+                <div className="col-6">
+                    <button type='button' className='btn btn-danger' onClick={() => resetinputs()}>Reset Inputs</button>
                   </div>
               </div>
 

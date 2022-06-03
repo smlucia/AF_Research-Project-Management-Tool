@@ -1,10 +1,18 @@
-const express =  require("express");
+
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const connection = require("./db");
+const userRoute = require("./routes/userRoute");
+const authRoute = require("./routes/authRoute");
 const mongoose =  require("mongoose");
 const bodyparser = require("body-parser");
-const cors = require("cors");
+
 //for uploading files
 const path = require("path");
-const fileRoutes = require("./routes/file-upload-routes")
+const fileRoutes = require("./routes/file-upload-routes");
+
+const subRoutes = require("./routes/submissionRoute");
 
 const app = express();
 app.use(bodyparser.json());
@@ -16,19 +24,28 @@ app.use(cors());
 //initialize database connection
 mongoose.connect("mongodb+srv://user_1212:user123123@clusterno1.1hpvx.mongodb.net/rpmt_db?retryWrites=true&w=majority");
 
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log('MongoDB database successfully connected. ');
-})
+
+// database connection
+connection();
 
 
-//add routes here
+// middlewares
+app.use(express.json());
+app.use(cors());
+
+// routes
+app.use("/users", userRoute);
+app.use("/auth", authRoute);
 
 //Marking schemes function implemtation
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', fileRoutes.routes);
 
+//submissions
+app.use("/sub", subRoutes);
 
 
-const PORT = process.env.PORT || 5005;
-app.listen(PORT);
+
+
+const port = process.env.PORT || 6005;
+app.listen(port, console.log(`Listening on port ${port}...`));

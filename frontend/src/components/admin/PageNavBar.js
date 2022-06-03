@@ -12,8 +12,8 @@ const PageNavBar = () => {
                     <div className="logo">Admin Dashboard</div>
                     <ul className="nav-links">
                         <li><a href="/mark">Marking Schemes</a></li>
-                        <li><a>Templates</a></li>
-                        <li><a>Submissions</a></li>
+                        <li><a href="/temp">Templates</a></li>
+                        <li><a href="/sublist">Submissions</a></li>
                         {/* <li><a>SignUp</a></li> */}
                     </ul>
                 
@@ -21,7 +21,7 @@ const PageNavBar = () => {
             
             </div>
 
-            <div className='sidenav'>
+            {/* <div className='sidenav'>
              
                 <a href="/adhome">Home</a>
                 <a href="#">Student</a>
@@ -29,7 +29,7 @@ const PageNavBar = () => {
                 <a href="#">Staff</a>
                 <a href="#">LogOut</a>
 
-            </div>
+            </div> */}
         </>
       );
 }
