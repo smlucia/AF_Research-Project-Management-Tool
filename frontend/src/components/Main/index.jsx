@@ -1,4 +1,5 @@
 import styles from "./styles.module.css";
+import Button from '@mui/material/Button';
 
 const Main = () => {
 	const handleLogout = () => {
@@ -6,13 +7,17 @@ const Main = () => {
 		window.location.reload();
 	};
 
+	//return statement
 	return (
 		<div className={styles.main_container}>
 			<nav className={styles.navbar}>
-				<h1>fakebook</h1>
-				<button className={styles.white_btn} onClick={handleLogout}>
+				<h1>Welcome {localStorage.getItem("username")}</h1>
+				<Button 
+					className={styles.white_btn} 
+					onClick={handleLogout}
+					variant="text">
 					Logout
-				</button>
+				</Button>
 			</nav>
 			<h1>User Name</h1>
 			<h2>{localStorage.getItem("username")}</h2>

@@ -93,6 +93,8 @@
 
 .green_btn {
 	background-color: #3bb19b;
+	font-weight: bold;
+	font-size: medium;
 	color: white;
 	margin: 10px;
 }
