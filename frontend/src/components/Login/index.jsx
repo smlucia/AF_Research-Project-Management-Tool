@@ -29,7 +29,11 @@ const Login = () => {
 				window.location = "/studentDashboard";
 			} else if (res.usertype === 'staff')  {
 				window.location = "/staffDashboard";
-			} else {
+			} 
+			else if (res.usertype === 'panelmember')  {
+				window.location = "/panelmember";
+			}
+			else {
 				window.location = "/";
 			}
 

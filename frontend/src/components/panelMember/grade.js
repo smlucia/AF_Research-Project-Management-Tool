@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/admin/AdminNavBar.css';
+import Button from '@mui/material/Button';
 
 // create data function
 let id = 0;
@@ -15,12 +16,21 @@ const rows = [
 ];
 
 const Grade = () => {
-    
+    const handleLogout = () => {
+		localStorage.removeItem("token");
+		// set path to signin
+        window.location = "/";
+	};
         return (
             <>
                 <div>
                     <nav>
                         <div className="logo">Grade Submissions</div>
+                        <Button 
+                            onClick={handleLogout}
+                            variant="text">
+                            Logout
+                        </Button>
                     </nav>
                 
                 </div>

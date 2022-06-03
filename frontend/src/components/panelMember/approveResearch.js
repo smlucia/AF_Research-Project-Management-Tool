@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import CheckIcon from '@mui/icons-material/Check';
 import ToggleButton from '@mui/material/ToggleButton';
 import Switch from '@mui/material/Switch';
+import Button from '@mui/material/Button';
 
 const styles = theme => ({
   root: {
@@ -38,11 +39,22 @@ const ApproveResearch = () => {
             .catch(err => console.log(err));
     }, []);
 
+    const handleLogout = () => {
+		localStorage.removeItem("token");
+        window.location = "/";
+	};
+
         return (
             <>
                 <div>
                     <nav>
                         <div className="logo">Approve Research Topics</div>
+                        <Button 
+                            className={styles.white_btn} 
+                            onClick={handleLogout}
+                            variant="text">
+                            Logout
+                        </Button>
                     </nav>
                 
                 </div>
