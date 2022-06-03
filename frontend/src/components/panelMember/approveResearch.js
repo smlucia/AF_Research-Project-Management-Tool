@@ -8,6 +8,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import CheckIcon from '@mui/icons-material/Check';
+import ToggleButton from '@mui/material/ToggleButton';
+import Switch from '@mui/material/Switch';
 
 const styles = theme => ({
   root: {
@@ -21,21 +24,21 @@ const styles = theme => ({
 });
 
 let id = 0;
-function createData(groupId, leaderEmail, researchTopic, academicYear, approved) {
+function createData(groupId, leaderEmail, researchTopic, academicYear, approved, selected) {
   id += 1;
   return { id, groupId, leaderEmail, researchTopic, academicYear, approved };
 }
 
 const rows = [
-  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True"),
-  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True"),
-  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True")
+  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True", false),
+  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True", false),
+  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True", false),
 
 ];
 
 
 const ApproveResearch = () => {
-    
+    const label = { inputProps: { 'aria-label': 'Switch demo' } };
         return (
             <>
                 <div>
@@ -66,6 +69,11 @@ const ApproveResearch = () => {
                                     <TableCell align="right">{row.researchTopic}</TableCell>
                                     <TableCell align="right">{row.academicYear}</TableCell>
                                     <TableCell align="right">{row.approved}</TableCell>
+                                    {/* add a toggle button to a cell */}
+                                    <TableCell align="right">
+                                        <Switch {...label} defaultChecked />
+                                    </TableCell>
+                                    
                                 </TableRow>
                             );
                         })}
