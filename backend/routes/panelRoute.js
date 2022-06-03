@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { StudentResearchTopic } = require("../../models/student/studentResearchTopicRegister");
+const { StudentResearchTopic } = require("../models/student/studentResearchTopicRegister");
 const bcrypt = require("bcrypt");
 
 router.get("/research-topics", async (req, res) => {

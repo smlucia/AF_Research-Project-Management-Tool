@@ -5,16 +5,8 @@ const studentResearchTopicRegisterSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
-	leaderEmail: { 
-        type: String, 
-        required: true 
-    },
 	researchTopic: { 
         type: String, 
-        required: true 
-    },
-	academicYear: { 
-        type: Number, 
         required: true 
     },
     topicRequestStatus: {
