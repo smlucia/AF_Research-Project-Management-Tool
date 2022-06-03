@@ -39,6 +39,12 @@ import PanelMember from './components/panelMember/panelMember';
 import ApproveResearch from './components/panelMember/approveResearch';
 import Grade from './components/panelMember/grade';
 
+//import superviosr route
+import SupervisorDashboard from "./components/Supervisor/supervisorDashboard";
+import ResearchSubmissions from "./components/Supervisor/researchSubmissions";
+import TopicSubmissions from "./components/Supervisor/topicSubmissions";
+import Supervisor from "./components/Supervisor/Evaluate";
+
 
 // function App() {
 //     const user = localStorage.getItem("token");
@@ -88,7 +94,7 @@ const App = () => {
             <Route path="temp" element={ <Template/> } />
             <Route path="evaluate" element={ <Supervisor/> } />
             
-            </Routes>
+            
 
                     {user && <Route path="/" exact element={<Main />} />}
                     <Route path="/signup" exact element={<Signup />} />
@@ -113,6 +119,12 @@ const App = () => {
                     <Route path="panelmember" element={<PanelMember />} />
                     <Route path="panelmember/approve-research" element={<ApproveResearch />} />
                     <Route path="panelmember/grade" element={<Grade />} />
+
+                    {/*supervisor routes */}
+                    <Route path="/supervisorDashboard" exact element={<SupervisorDashboard />}/>
+                    <Route path="supervisor/topicSubmissions" exact element={<TopicSubmissions />}/>
+                    <Route path="/supervisor/researchSubmissions" exact element={<ResearchSubmissions />}/>
+                    <Route path="supervisor" exact element={<Supervisor />}/>
                 </Routes>
 
             </Router>
