@@ -17,6 +17,7 @@ const Signup = () => {
 		firstName: "",
 		lastName: "",
 		email: "",
+		mobile:"",
 		password: "",
 		userType: "student",
 	});
@@ -35,7 +36,7 @@ const Signup = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:5005/users";
+			const url = "http://localhost:6005/users";
 			const { data: res } = await axios.post(url, data);
 			navigate("/login");
 			console.log(res.message);
@@ -61,7 +62,7 @@ const Signup = () => {
 					<h1>Welcome Back</h1>
 					<Link to="/login">
 						<button type="button" className={styles.white_btn}>
-							Sign in
+							SIGN IN
 						</button>
 					</Link>
 				</div>
@@ -96,6 +97,15 @@ const Signup = () => {
 							className={styles.input}
 						/>
 						<input
+							type="tel"
+							placeholder="Contact Number"
+							name="mobile"
+							onChange={handleChange}
+							value={data.mobile}
+							required
+							className={styles.input}
+						/>
+						<input
 							type="password"
 							placeholder="Password"
 							name="password"
@@ -115,13 +125,15 @@ const Signup = () => {
 								style={{ display: 'initial' }}
 							>
 								<FormControlLabel value="student" control={<Radio />} label="Student" />
-								<FormControlLabel value="staff" control={<Radio />} label="Staff" />
+								<FormControlLabel value="supervisor" control={<Radio />} label="Supervisor" />
+								<FormControlLabel value="coSupervisor" control={<Radio />} label="Co-Supervisor" />
+								<FormControlLabel value="panelmember" control={<Radio />} label="Panel Member" />
 							</RadioGroup>
 						</FormControl>
 
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-							Sign Up
+							SIGN UP
 						</button>
 					</form>
 				</div>
