@@ -2,13 +2,13 @@ const path = require('path');
 const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
-const convertMessage = require('../frontend/pages/sms');
+const convertMessage = require('../frontend/src/components/pages/sms');
 const {
     memberJoin,
     getCurrentmember,
     memberLeave
 
-} = require('../frontend/pages/members');
+} = require('../frontend/src/components/pages/members');
 
 
 
@@ -16,7 +16,7 @@ const app = express();
 const host = http.createServer(app);
 const sckt = socketIO(host);
 
-app.use(express.static(path.join(__dirname, '../frontend/public')));
+app.use(express.static(path.join(__dirname, '../frontend/src/components/supervisor')));
 
 const stName = 'Admin';
 

@@ -1,3 +1,6 @@
+
+import React from 'react';
+
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import React from 'react';
 import './App.css';
@@ -9,6 +12,7 @@ import Signup from "./components/Singup";
 import Login from "./components/Login";
 
 import HomePage from './components/HomePage.js';
+
 
 //student route imports
 import StudentDashboard from "./components/Student/studentDashboard";
@@ -22,6 +26,13 @@ import StudentSubmitDocument from "./components/Student/studentSubmitDocument";
 //admin route imports
 import AdminHome from './components/admin/AdminHome';
 import NavBar from './components/admin/AdminNavBar';
+
+import Marking from './components/admin/MarkingSchemePage'
+import Template from './components/admin/TemplatePage'
+import Supervisor from './components/supervisor';
+
+
+
 import Marking from './components/admin/MarkingSchemePage';
 import Template from './components/admin/TemplatePage';
 import PanelMember from './components/panelMember/panelMember';
@@ -51,6 +62,7 @@ import Grade from './components/panelMember/grade';
 //         </Routes>
 //     );
 
+
 //import LoginAndSignup from './container/loginAndSignup';
 
 
@@ -67,6 +79,16 @@ const App = () => {
                 <Routes>
                     {/* <Route path="/" element={ <Home/> } />
             <Route path="about" element={ <About/> } /> */}
+
+
+            {/* admin routes */}
+            <Route path="adhome" element={ <AdminHome/> } />
+            <Route path="nav" element={ <NavBar/> } />
+            <Route path="mark" element={ <Marking/> } />
+            <Route path="temp" element={ <Template/> } />
+            <Route path="evaluate" element={ <Supervisor/> } />
+            
+            </Routes>
 
                     {user && <Route path="/" exact element={<Main />} />}
                     <Route path="/signup" exact element={<Signup />} />
@@ -94,6 +116,7 @@ const App = () => {
                 </Routes>
 
             </Router>
+
 
 
             {/* <div className='app'></div> */}
