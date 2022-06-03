@@ -8,6 +8,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import CheckIcon from '@mui/icons-material/Check';
+import ToggleButton from '@mui/material/ToggleButton';
+import Switch from '@mui/material/Switch';
+import Button from '@mui/material/Button';
 
 const styles = theme => ({
   root: {
@@ -20,52 +24,91 @@ const styles = theme => ({
   },
 });
 
-let id = 0;
-function createData(groupId, leaderEmail, researchTopic, academicYear, approved) {
-  id += 1;
-  return { id, groupId, leaderEmail, researchTopic, academicYear, approved };
-}
-
-const rows = [
-  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True"),
-  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True"),
-  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True")
-
-];
+const apiURL = "http://localhost:6005/panel-member/research-topics";
 
 
 const ApproveResearch = () => {
-    
+    const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+    // get the data from the api
+    const [data, setData] = React.useState([]);
+    React.useEffect(() => {
+        fetch(apiURL)
+            .then(res => res.json())
+            .then(json => setData(json))
+            .catch(err => console.log(err));
+    }, []);
+
+    const handleLogout = () => {
+		localStorage.removeItem("token");
+        window.location = "/";
+	};
+
         return (
             <>
                 <div>
                     <nav>
                         <div className="logo">Approve Research Topics</div>
+                        <Button 
+                            className={styles.white_btn} 
+                            onClick={handleLogout}
+                            variant="text">
+                            Logout
+                        </Button>
                     </nav>
                 
                 </div>
 
             {/* create a table */}
             <Paper className={styles.root}>
-                <Table className={styles.table}>
+                <Table className={styles.table} style={{ width: 1200 }}>
                     <TableHead>
                         <TableRow>
                             <TableCell align="right">Group ID</TableCell>
-                            <TableCell align="right">Leader Email</TableCell>
                             <TableCell align="right">Research Topic</TableCell>
-                            <TableCell align="right">Academic Year</TableCell>
                             <TableCell align="right">Approved</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map(row => {
+                        {data.map(row => {
+                            let id = row._id;
                             return (
-                                <TableRow key={row.id}>
+                                <TableRow>
                                     <TableCell align="right">{row.groupId}</TableCell>
-                                    <TableCell align="right">{row.leaderEmail}</TableCell>
                                     <TableCell align="right">{row.researchTopic}</TableCell>
-                                    <TableCell align="right">{row.academicYear}</TableCell>
-                                    <TableCell align="right">{row.approved}</TableCell>
+                                    {/* add a toggle button to a cell */}
+                                    <TableCell align="right">
+                                        {/* put a switch accodrong to row.topicRequestStatus */}
+                                        <Switch
+                                            checked={row.topicRequestStatus}
+                                            onChange={() => {
+                                                setData(data.map(row => {
+                                                    if (id === row._id) {
+                                                        row.topicRequestStatus = !row.topicRequestStatus;
+                                                    }
+                                                    return row;
+                                                }));
+
+                                                // update the topicRequestStatus in the database
+                                                fetch(apiURL + "/" + id, {
+                                                    method: "PUT",
+                                                    headers: {
+                                                        "Content-Type": "application/json"
+                                                    },
+                                                    body: JSON.stringify({
+                                                        topicRequestStatus: row.topicRequestStatus
+                                                    })
+                                                })
+                                                    .then(res => res.json())
+                                                    .then(json => console.log(json))
+                                                    .catch(err => console.log(err));
+
+                                            }}
+                                            value="checkedA"
+                                            inputProps={label}
+                                        />
+                                    </TableCell>
+                                    
                                 </TableRow>
                             );
                         })}

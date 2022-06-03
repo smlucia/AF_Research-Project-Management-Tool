@@ -8,6 +8,7 @@ const authRoute = require("./routes/authRoute");
 const studentGroupRoute = require("./routes/student/studentGroupRoute");
 const studentResearchTopicRoute = require("./routes/student/studentResearchTopicRoute");
 const studentRequestSupervisorRoute = require("./routes/student/studentRequestSupervisorRoute");
+const panelRoute = require("./routes/panelRoute");
 
 
 
@@ -24,6 +25,7 @@ app.use("/auth", authRoute);
 app.use("/studentGroup", studentGroupRoute);
 app.use("/researchTopicReg", studentResearchTopicRoute);
 app.use("/requestSupervisor", studentRequestSupervisorRoute);
+app.use("/panel-member", panelRoute);
 
 
 const port = process.env.PORT || 6005;

@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ApproveResearch from './approveResearch';
 import { Link } from 'react-router-dom';
+
+
 const bull = (
     <Box
       component="span"
@@ -18,11 +20,20 @@ const bull = (
   );
 
 const PanelMember = () => {
+  const handleLogout = () => {
+		localStorage.removeItem("token");
+    window.location = "/";
+	};
     return (
         <>
            <div>
                 <nav>
                     <div className="logo">Panel Member Dashboard</div>
+                    <Button 
+                            onClick={handleLogout}
+                            variant="text">
+                            Logout
+                        </Button>
                 </nav>
             
             </div>
