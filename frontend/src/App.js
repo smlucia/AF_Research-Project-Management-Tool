@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-import { Route, Routes, Navigate } from "react-router-dom";
-import Main from "./components/Main";
-import Signup from "./components/Singup";
-import Login from "./components/Login";
-
-function App() {
-	const user = localStorage.getItem("token");
-
-	return (
-		<Routes>
-			{user && <Route path="/" exact element={<Main />} />}
-			<Route path="/signup" exact element={<Signup />} />
-			<Route path="/login" exact element={<Login />} />
-			<Route path="/" element={<Navigate replace to="/login" />} />
-		</Routes>
-	);
-=======
 import React from 'react';
 
 import  './App.css';
@@ -28,6 +10,7 @@ import AdminHome from './components/admin/AdminHome';
 import NavBar from './components/admin/AdminNavBar';
 import Marking from './components/admin/MarkingSchemePage'
 import Template from './components/admin/TemplatePage'
+import Supervisor from './components/supervisor';
 
 
 
@@ -53,6 +36,7 @@ const App = () => {
             <Route path="nav" element={ <NavBar/> } />
             <Route path="mark" element={ <Marking/> } />
             <Route path="temp" element={ <Template/> } />
+            <Route path="evaluate" element={ <Supervisor/> } />
             
             </Routes>
 
@@ -64,7 +48,6 @@ const App = () => {
 
         </>
     )
->>>>>>> c387a0ec7cbb02a516e570efae8ccd1844105892
 }
 
 export default App;
