@@ -9,7 +9,20 @@ router.get("/research-topics", async (req, res) => {
 );
 
 // route to update the research topic
-router.post("/research-topics/:id", async (req, res) => {
-    
+router.put("/research-topics/:id", async (req, res) => {
+    // update the topicRequestStatus value in the database
+    const researchTopic = await StudentResearchTopic.findByIdAndUpdate(
+        req.params.id,
+        {
+            topicRequestStatus: req.body.topicRequestStatus,
+        },
+        { new: true }
+    );
+
+    if (!researchTopic)
+        return res.status(404).send({ message: "Research Topic not found" });
+
+    res.json(researchTopic);
+});
 
 module.exports = router;

@@ -23,19 +23,6 @@ const styles = theme => ({
   },
 });
 
-let id = 0;
-function createData(groupId, leaderEmail, researchTopic, academicYear, approved, selected) {
-  id += 1;
-  return { id, groupId, leaderEmail, researchTopic, academicYear, approved };
-}
-
-let rows = [
-  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True", false),
-  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True", false),
-  createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True", false),
-
-];
-
 const apiURL = "http://localhost:6005/panel-member/research-topics";
 
 
@@ -62,7 +49,7 @@ const ApproveResearch = () => {
 
             {/* create a table */}
             <Paper className={styles.root}>
-                <Table className={styles.table} style={{ width: 750 }}>
+                <Table className={styles.table} style={{ width: 1200 }}>
                     <TableHead>
                         <TableRow>
                             <TableCell align="right">Group ID</TableCell>
@@ -72,17 +59,38 @@ const ApproveResearch = () => {
                     </TableHead>
                     <TableBody>
                         {data.map(row => {
+                            let id = row._id;
                             return (
-                                <TableRow key={row.id}>
+                                <TableRow>
                                     <TableCell align="right">{row.groupId}</TableCell>
                                     <TableCell align="right">{row.researchTopic}</TableCell>
                                     {/* add a toggle button to a cell */}
                                     <TableCell align="right">
-                                        {/* set switch using row.approved boolean */}
+                                        {/* put a switch accodrong to row.topicRequestStatus */}
                                         <Switch
-                                            checked={row.approved}
+                                            checked={row.topicRequestStatus}
                                             onChange={() => {
-                                                // 
+                                                setData(data.map(row => {
+                                                    if (id === row._id) {
+                                                        row.topicRequestStatus = !row.topicRequestStatus;
+                                                    }
+                                                    return row;
+                                                }));
+
+                                                // update the topicRequestStatus in the database
+                                                fetch(apiURL + "/" + id, {
+                                                    method: "PUT",
+                                                    headers: {
+                                                        "Content-Type": "application/json"
+                                                    },
+                                                    body: JSON.stringify({
+                                                        topicRequestStatus: row.topicRequestStatus
+                                                    })
+                                                })
+                                                    .then(res => res.json())
+                                                    .then(json => console.log(json))
+                                                    .catch(err => console.log(err));
+
                                             }}
                                             value="checkedA"
                                             inputProps={label}
