@@ -8,4 +8,8 @@ router.get("/research-topics", async (req, res) => {
 }
 );
 
+// route to update the research topic
+router.post("/research-topics/:id", async (req, res) => {
+    
+
 module.exports = router;

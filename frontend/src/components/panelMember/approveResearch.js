@@ -29,16 +29,28 @@ function createData(groupId, leaderEmail, researchTopic, academicYear, approved,
   return { id, groupId, leaderEmail, researchTopic, academicYear, approved };
 }
 
-const rows = [
+let rows = [
   createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True", false),
   createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True", false),
   createData('SE3060_WD_01', 'kawshi@gmail.com', "Automobile", 4, "True", false),
 
 ];
 
+const apiURL = "http://localhost:6005/panel-member/research-topics";
+
 
 const ApproveResearch = () => {
     const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
+    // get the data from the api
+    const [data, setData] = React.useState([]);
+    React.useEffect(() => {
+        fetch(apiURL)
+            .then(res => res.json())
+            .then(json => setData(json))
+            .catch(err => console.log(err));
+    }, []);
+
         return (
             <>
                 <div>
@@ -50,28 +62,31 @@ const ApproveResearch = () => {
 
             {/* create a table */}
             <Paper className={styles.root}>
-                <Table className={styles.table}>
+                <Table className={styles.table} style={{ width: 750 }}>
                     <TableHead>
                         <TableRow>
                             <TableCell align="right">Group ID</TableCell>
-                            <TableCell align="right">Leader Email</TableCell>
                             <TableCell align="right">Research Topic</TableCell>
-                            <TableCell align="right">Academic Year</TableCell>
                             <TableCell align="right">Approved</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map(row => {
+                        {data.map(row => {
                             return (
                                 <TableRow key={row.id}>
                                     <TableCell align="right">{row.groupId}</TableCell>
-                                    <TableCell align="right">{row.leaderEmail}</TableCell>
                                     <TableCell align="right">{row.researchTopic}</TableCell>
-                                    <TableCell align="right">{row.academicYear}</TableCell>
-                                    <TableCell align="right">{row.approved}</TableCell>
                                     {/* add a toggle button to a cell */}
                                     <TableCell align="right">
-                                        <Switch {...label} defaultChecked />
+                                        {/* set switch using row.approved boolean */}
+                                        <Switch
+                                            checked={row.approved}
+                                            onChange={() => {
+                                                // 
+                                            }}
+                                            value="checkedA"
+                                            inputProps={label}
+                                        />
                                     </TableCell>
                                     
                                 </TableRow>
