@@ -66,7 +66,7 @@ const MarkingSchemePage = () => {
                                   <iframe class="embed-responsive-item" src={`http://localhost:5005/${file.filePath }`} width="200"  height="200"></iframe>
                                 </div> */}
 
-                            <object data={`http://localhost:5005/${file.filePath }`} type="application/pdf" width="200" height="200"/>
+                            <object data={`http://localhost:6005/${file.filePath }`} type="application/pdf" width="200" height="200"/>
                                   
                                 </div>
                               </div>
@@ -88,7 +88,7 @@ const MarkingSchemePage = () => {
                                                 <iframe class="embed-responsive-item" src={`http://localhost:5005/${file.filePath }`} width="200"  height="200"></iframe>
                                             </div> */}
                                            
-                                                <iframe class="embed-responsive-item" src={`http://localhost:5005/${file.filePath }`} width="200"  height="200"></iframe>
+                                                <iframe class="embed-responsive-item" src={`http://localhost:6005/${file.filePath }`} width="200"  height="200"></iframe>
                                             
                                                 
                                             </div>
