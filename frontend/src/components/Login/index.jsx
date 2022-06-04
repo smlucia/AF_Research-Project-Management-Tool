@@ -42,6 +42,15 @@ const Login = () => {
 				window.location = "/staffDashboard";
 			} 
 
+
+
+			else if (res.usertype === 'panelmember')  {
+				window.location = "/panelmember";
+			}
+			else if (res.usertype === 'supervisor')  {
+				window.location = "/supervisorDashboard";
+			}
+
 			else {
 				window.location = "/";
 			}
