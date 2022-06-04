@@ -25,9 +25,10 @@ const studentGroupsSchema = new Schema({
             email: String
         }
     ],
-    academicYear: {
-        type: Number,
-        required: true
+    panelId: {
+        type: String,
+        required: true,
+        default: 'none'
     },
    
 }, {timestamps: true});

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiURL = 'http://localhost:5005/api/';
+const apiURL = 'http://localhost:6005/api/';
 
 //upload single marking scheme files
 export const singleFileUpload = async (data , options) => {

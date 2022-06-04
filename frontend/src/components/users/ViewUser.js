@@ -39,7 +39,7 @@ export default function RecordList() {
  // This method fetches the records from the database.
  useEffect(() => {
    async function getRecord(id) {
-     const response = await fetch(`http://localhost:5005/users/getOneUser/${id}`, {
+     const response = await fetch(`http://localhost:6005/users/getOneUser/${id}`, {
       method: "GET"
     });
  

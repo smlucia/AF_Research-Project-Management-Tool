@@ -15,7 +15,7 @@ export default function Edit() {
  useEffect(() => {
    async function fetchData() {
      const id = params.id.toString();
-     const response = await fetch(`http://localhost:5005/users/getOneUser/${params.id.toString()}`);
+     const response = await fetch(`http://localhost:6005/users/getOneUser/${params.id.toString()}`);
  
      if (!response.ok) {
        const message = `An error has occurred: ${response.statusText}`;
@@ -54,7 +54,7 @@ export default function Edit() {
    };
  
    // This will send a post request to update the data in the database.
-   await fetch(`http://localhost:5005/users/updateOneUser/${params.id}`, {
+   await fetch(`http://localhost:6005/users/updateOneUser/${params.id}`, {
      method: "PUT",
      body: JSON.stringify(editedPerson),
      headers: {

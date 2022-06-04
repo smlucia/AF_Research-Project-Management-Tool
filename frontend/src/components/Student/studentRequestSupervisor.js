@@ -16,16 +16,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import SaveIcon from '@material-ui/core/Icon';
 
 
 const studentRequestSupervisor = () => {
-    // return (
-    //     <div> Inside Research Topic </div>
-    // );
-    const handleStudentDashboard = () => {
-        localStorage.removeItem("token");
-        window.location = "/studentDashboard";
-    };
 
     //interface modifications
     const paperStyle = { margin: "20px auto", width: 900 }
@@ -33,9 +27,8 @@ const studentRequestSupervisor = () => {
     const [data, setData] = useState({
         groupId: "",
         leaderEmail: "",
-        supervisorType: "",
+        //supervisorType: "",
         supervisorName: "",
-        academicYear: "",
     });
 
     const [error, setError] = useState("");
@@ -59,7 +52,7 @@ const studentRequestSupervisor = () => {
         try {
             const url = "http://localhost:6005/requestSupervisor";
             const { data: res } = await axios.post(url, data);
-            navigate("/studentDashboard");
+            navigate("/studentHomePage");
             console.log(res.message);
         } catch (error) {
             if (
@@ -73,21 +66,37 @@ const studentRequestSupervisor = () => {
     };
 
     //handle supervisor type 
-    const getInitialState = () => {
-        const type = "supervisor";
-        return type;
-      };
+    // const getInitialState = () => {
+    //     const type = "supervisor";
+    //     return type;
+    // };
 
-    const [type, setType] = useState(getInitialState);
+    const [type, setType] = useState();
 
     const handleSupervisorTypeChange = (event) => {
         setType(event.target.value);
+    };
+
+    const handleStudentDashboard = () => {
+        localStorage.removeItem("token");
+        window.location = "/studentHomePage";
+    };
+
+    const handleHome = () => {
+        localStorage.removeItem("token");
+        window.location = "/home";
     };
 
     return (
         <div className="requestSupervisor">
             <nav className={styles.navbar}>
                 <h1></h1>
+                <button
+                    className={styles.home_btn}
+                    onClick={handleHome}
+                    variant="text">
+                    HOME
+                </button>
                 <button
                     className={styles.white_btn}
                     onClick={handleStudentDashboard}
@@ -171,18 +180,14 @@ const studentRequestSupervisor = () => {
                                     value={data.supervisorName}
                                     required />
 
-                                <TextField
-                                    id="outlined-basic"
-                                    label="Academic Year"
-                                    variant="outlined"
-                                    fullWidth
-                                    name='academicYear'
-                                    onChange={handleChange}
-                                    value={data.academicYear}
-                                    required />
-
                                 {error && <div className="error_msg">{error}</div>}
-                                <Button variant="contained" fullWidth onClick={handleSupervisorRequest}>SEND REQUEST</Button>
+                                <Button
+                                    variant="contained"
+                                    fullWidth
+                                    endIcon={<SaveIcon/>}
+                                    onClick={handleSupervisorRequest}>
+                                    SEND REQUEST
+                                </Button>
 
                             </Box>
 

@@ -1,12 +1,15 @@
 .backImg {
-    background-image: 
-    url('https://images.unsplash.com/photo-1501290836517-b22a21c522a4?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332');
     height: 80vh;
     background-size: cover;
     background-repeat: no-repeat;
-
-  
-           
+    /* background-image: url("https://media.istockphoto.com/vectors/young-people-group-reading-books-study-learning-knowledge-and-vector-vector-id1206750602?k=20&m=1206750602&s=612x612&w=0&h=nOBI0vsqpURdDZ1dmcn9bys2Z_5gaIuAl1pfFujZiMk="); */
+    height: 100%;
+    background-image: url("https://media.istockphoto.com/vectors/young-people-reading-books-study-learning-knowledge-and-education-vector-id1208275886?k=20&m=1208275886&s=170667a&w=0&h=gtzw3svyKc5ioR-NWNEOQgybfci8GZjq2xyqpLDgDZM=");
+    /* background-image: url("https://media.istockphoto.com/vectors/young-people-reading-books-in-the-park-summer-landscape-background-vector-id1209257337?k=20&m=1209257337&s=612x612&w=0&h=PcKNkONcsNWuUTDWrCmZag7hTr76LpfFuUM8OuMk4AQ="); */
+    background-position: center;
+    position: absolute;
+    left: 0;
+    width: 100%;        
 }
 
 .para{
@@ -48,8 +51,7 @@
 
 .container {
     height: 60px;
-    position: relative;
-    border: 3px solid white; 
+    position: absolute;
 }
 
 .container button {
@@ -59,16 +61,20 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    background-color: #6F8FAF; /* Green */
+    background-color: #0e412d; /* Green */
     border: none;
     color: white;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 25px;
     margin: 4px 2px;
     cursor: pointer;
-    padding: 14px 40px;
+    padding: 10px 40px;
+    margin-top: 590px;
+    margin-left: 100px;
+    border-radius: 30px;
+    width: 350px;
 }
 
 

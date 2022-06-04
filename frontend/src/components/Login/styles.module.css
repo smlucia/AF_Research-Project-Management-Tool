@@ -2,6 +2,7 @@
 	width: 100%;
 	min-height: 100vh;
 	background-color: #f5f5f5;
+	background-image: url("https://t3.ftcdn.net/jpg/05/00/34/58/360_F_500345899_4OqmtspFst6SRnNQvLj7h7TfKOrBwTer.jpg");
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -11,6 +12,7 @@
 	width: 900px;
 	height: 500px;
 	display: flex;
+	margin-top: -90px;
 	border-radius: 10px;
 	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
 		0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
@@ -95,4 +97,75 @@
 	background-color: #3bb19b;
 	color: white;
 	margin: 10px;
+}
+
+.homeSignin_btn {
+	border: none;
+	outline: none;
+	padding: 12px 0;
+	background-color: black;
+	color: white;
+	border-radius: 20px;
+	width: 120px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	margin-right: 0px;
+	margin-left: 1070px;
+}
+
+.homeSignup_btn {
+	border: none;
+	outline: none;
+	padding: 12px 0;
+	background-color: black;
+	color: white;
+	border-radius: 20px;
+	width: 120px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	margin-right: 20px;
+}
+
+.homeSigninButton_btn {
+	border: none;
+	outline: none;
+	padding: 12px 0;
+	background-color: black;
+	color: white;
+	border-radius: 20px;
+	width: 120px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	margin-right: 30px;
+	margin-left:900px;
+}
+
+.homeSignupButton_btn {
+	border: none;
+	outline: none;
+	padding: 12px 0;
+	background-color: black;
+	color: white;
+	border-radius: 20px;
+	width: 120px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	margin-right: 30px;
+}
+
+.signupHome_btn {
+	border: none;
+	outline: none;
+	padding: 12px 0;
+	background-color: white;
+	border-radius: 20px;
+	width: 130px;
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	margin-left:20px;
 }

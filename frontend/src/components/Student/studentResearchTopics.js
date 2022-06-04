@@ -20,7 +20,22 @@ const studentResearchTopics = () => {
     // );
     const handleStudentDashboard = () => {
         localStorage.removeItem("token");
-        window.location = "/studentDashboard";
+        window.location = "/studentHomePage";
+    };
+
+    const handleResearchReg = () => {
+        localStorage.removeItem("token");
+        window.location = "/studentResearchTopics";
+    };
+
+    const handleManageResearch = () => {
+        localStorage.removeItem("token");
+        window.location = "/studentHandleResearchTopic";
+    };
+
+    const handleHome = () => {
+        localStorage.removeItem("token");
+        window.location = "/home";
     };
 
     //interface modifications
@@ -28,9 +43,7 @@ const studentResearchTopics = () => {
 
     const [data, setData] = useState({
         groupId: "",
-        leaderEmail: "",
         researchTopic: "",
-        academicYear: "",
     });
 
     const [error, setError] = useState("");
@@ -53,7 +66,7 @@ const studentResearchTopics = () => {
         try {
             const url = "http://localhost:6005/researchTopicReg";
             const { data: res } = await axios.post(url, data);
-            navigate("/studentDashboard");
+            navigate("/studentHomePage");
             console.log(res.message);
         } catch (error) {
             if (
@@ -71,15 +84,33 @@ const studentResearchTopics = () => {
             <nav className="studentResearchTopic-nav-bar">
                 <h1></h1>
                 <button
-                    className={styles.white_btn}
+                    className={styles.handleResearchHome_btn}
+                    onClick={handleHome}
+                    variant="text">
+                    HOME
+                </button>
+                <button
+                    className={styles.handleResearchDash_btn}
                     onClick={handleStudentDashboard}
                     variant="text">
                     DASHBOARD
                 </button>
+                <button
+                    className={styles.researchReg_btn}
+                    onClick={handleResearchReg}
+                    variant="text">
+                    REGISTER RESEARCH TOPIC
+                </button>
+                <button
+                    className={styles.manageResearch_btn}
+                    onClick={handleManageResearch}
+                    variant="text">
+                    MANAGE RESEARCH TOPIC
+                </button>
             </nav>
 
             <Paper elevation={5} style={paperStyle}>
-                <Card sx={{ display: 'flex', marginTop: 10 }}>
+                <Card sx={{ display: 'flex', marginTop: 15 }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <CardContent sx={{ flex: '1 0 auto' }}>
                             <Typography component="div" variant="h5" align='center'>
@@ -106,16 +137,6 @@ const studentResearchTopics = () => {
 
                                 <TextField
                                     id="outlined-basic"
-                                    label="Leader Email"
-                                    variant="outlined"
-                                    fullWidth
-                                    name='leaderEmail'
-                                    onChange={handleChange}
-                                    value={data.leaderEmail}
-                                    required />
-
-                                <TextField
-                                    id="outlined-basic"
                                     label="Research Topic"
                                     variant="outlined"
                                     fullWidth
@@ -124,15 +145,6 @@ const studentResearchTopics = () => {
                                     value={data.researchTopic}
                                     required />
 
-                                <TextField
-                                    id="outlined-basic"
-                                    label="Academic Year"
-                                    variant="outlined"
-                                    fullWidth
-                                    name='academicYear'
-                                    onChange={handleChange}
-                                    value={data.academicYear}
-                                    required />
                                 {error && <div className="error_msg">{error}</div>}
                                 <Button variant="contained" fullWidth onClick={handleResearchTopicSubmit}>SUBMIT</Button>
 

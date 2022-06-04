@@ -5,16 +5,15 @@ const NavBar = () => {
 
     const [open, setOpen] = useState(false);
     return (
-        <div  style={{ }}>
+        <div>
             <nav>
                 <div className="logo">OurTool</div>
                 <ul className="nav-links" style={{
                     transform: open ? "translateX(0px)" : ""
                 }}>
-                    <li><a>Home</a></li>
-                    <li><a>Contact Us</a></li>
-                    <li><a>SignIn</a></li>
-                    <li><a>SignUp</a></li>
+                    <li><a href='/home'>HOME</a></li>
+                    <li><a href='/login'>SIGN IN</a></li>
+                    <li><a href='/signup'>SIGN UP</a></li>
                 </ul>
                 <i onClick={() => setOpen(!open)} className="fa-solid fa-bars menu"></i>
             </nav>

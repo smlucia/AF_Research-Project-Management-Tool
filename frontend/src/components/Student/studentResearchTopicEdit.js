@@ -3,10 +3,8 @@ import { useParams, useNavigate } from "react-router";
  
 export default function Edit() {
  const [form, setForm] = useState({
-   firstName: "",
-   lastName: "",
-   email: "",
-   mobile: "",
+   groupId: "",
+   researchTopic: "",
    records: [],
  });
  const params = useParams();
@@ -15,7 +13,7 @@ export default function Edit() {
  useEffect(() => {
    async function fetchData() {
      const id = params.id.toString();
-     const response = await fetch(`http://localhost:6005/users/getOneUser/${params.id.toString()}`);
+     const response = await fetch(`http://localhost:6005/researchTopicReg/getOneResearchTopic/${params.id.toString()}`);
  
      if (!response.ok) {
        const message = `An error has occurred: ${response.statusText}`;
@@ -47,23 +45,22 @@ export default function Edit() {
  
  async function onSubmit(e) {
    e.preventDefault();
-   const editedPerson = {
-     firstName: form.firstName,
-     lastName: form.lastName,
-     email: form.email,
-     mobile: form.mobile,
+   const editedResearchTopic = {
+     groupId: form.groupId,
+     researchTopic: form.researchTopic,
    };
  
    // This will send a post request to update the data in the database.
-   await fetch(`http://localhost:6005/users/updateOneUser/${params.id}`, {
+   await fetch(`http://localhost:6005/researchTopicReg/updateOneResearchTopic/${params.id}`, {
      method: "PUT",
-     body: JSON.stringify(editedPerson),
+     body: JSON.stringify(editedResearchTopic),
      headers: {
        'Content-Type': 'application/json'
      },
    });
+   
    window.alert(`Updated Successfully`);
-   navigate("/stafflist");
+   navigate("/studentHandleResearchTopic");
  }
  
  // This following section will display the form that takes input from the user to update the data.
@@ -79,65 +76,39 @@ export default function Edit() {
     overflow: "hidden"
     
 }}>
-    <h2 style={{textAlign: "center", margin:"50px auto",}}>Update Record</h2>
+    <h2 style={{textAlign: "center", margin:"50px auto",}}>Update Research Topic</h2>
         <div style={{
             width: "700px",
             margin:"50px auto",
-                 
             
         }}>
             
            
             <form onSubmit={onSubmit}>
             <div className="form-group">
-                <label htmlFor="name" style={{fontSize: "20px", color:"black",fontWeight:"bold" }}>FirstName: </label>
+                <label htmlFor="name" style={{fontSize: "20px", color:"black",fontWeight:"bold" }}>Group ID: </label>
                 <br/>
                 <input
                 type="text"
                 className="form-control form-control-lg"
                 
-                id="firstName"
-                value={form.firstName}
-                onChange={(e) => updateForm({ firstName: e.target.value })}
+                id="groupId"
+                value={form.groupId}
+                onChange={(e) => updateForm({ groupId: e.target.value })}
                 />
             </div>
             <br />
             <div className="form-group">
-                <label htmlFor="name" style={{fontSize: "20px", color:"black",fontWeight:"bold" }}>LastName: </label>
+                <label htmlFor="name" style={{fontSize: "20px", color:"black",fontWeight:"bold" }}>Research Topic: </label>
                 <input
                 type="text"
                 className="form-control form-control-lg "
-                id="lastName"
-                value={form.lastName}
-                onChange={(e) => updateForm({ lastName: e.target.value })}
+                id="researchTopic"
+                value={form.researchTopic}
+                onChange={(e) => updateForm({ researchTopic: e.target.value })}
                 />
             </div>
-            <br />
-            <div className="form-group">
-                <label htmlFor="email" style={{fontSize: "20px", color:"black",fontWeight:"bold" }}>Email: </label>
-                <input
-                type="email"
-                className="form-control form-control-lg"
-                id="email"
-                value={form.email}
-                onChange={(e) => updateForm({ email: e.target.value })}
-                />
-            </div>
-
-            
-            <br />
-            <div className="form-group">
-                <label htmlFor="mobile" style={{fontSize: "20px", color:"black",fontWeight:"bold" }}>Contact No: </label>
-                <input
-                type="tel"
-                className="form-control form-control-lg"
-                id="mobile"
-                value={form.mobile}
-                onChange={(e) => updateForm({ email: e.target.value })}
-                />
-            </div>
-
-            
+      
             <br />
         
             <div className="form-group">
@@ -149,7 +120,7 @@ export default function Edit() {
                     color:"white",
                     fontSize: "20px",
                     padding: "6px 10px",
-                   // backgroundColor: "##0074B7",
+                    //backgroundColor: "#0074B7",
                     
                 }}
                 />
