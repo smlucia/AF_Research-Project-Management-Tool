@@ -6,9 +6,7 @@ const bcrypt = require("bcrypt");
 router.post("/", async (req, res) => {
     
     const groupId = req.body.groupId;
-    const leaderEmail = req.body.leaderEmail;
     const researchTopic = req.body.researchTopic;
-    const academicYear = req.body.academicYear;
     const topicRequestStatus = req.body.topicRequestStatus;
 
     const topic = await StudentResearchTopic.findOne({ groupId: req.body.groupId });
@@ -21,9 +19,7 @@ router.post("/", async (req, res) => {
 
     const newStudentResearchTopic = new StudentResearchTopic({
         groupId,
-        leaderEmail,
         researchTopic,
-        academicYear,
         topicRequestStatus
     });
 
