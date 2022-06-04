@@ -1,33 +1,30 @@
 import React from 'react';
 import '../../styles/admin/AdminNavBar.css';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import CheckIcon from '@mui/icons-material/Check';
-import ToggleButton from '@mui/material/ToggleButton';
 import Switch from '@mui/material/Switch';
-import Button from '@mui/material/Button';
 
 const styles = theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     overflowX: 'auto',
+    
   },
   table: {
     minWidth: 700,
   },
+ 
 });
 
-const apiURL = "http://localhost:6005/panel-member/research-topics";
+const apiURL = "http://localhost:6005/supervisor/topicSubmissions";
 
 
-const ApproveResearch = () => {
+const AcceptTopic = () => {
     const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
     // get the data from the api
@@ -38,42 +35,39 @@ const ApproveResearch = () => {
             .then(json => setData(json))
             .catch(err => console.log(err));
     }, []);
-
-    const handleLogout = () => {
-		localStorage.removeItem("token");
-        window.location = "/";
-	};
+    
 
         return (
-            <>
+            <div style={{
+                background: "linear-gradient(to top right, #009999 -15%, #ffffff 100%)",
+                height:700
+            }}>
+                  
                 <div>
-                    <nav>
-                        <div className="logo">Approve Research Topics</div>
-                        <Button 
-                            className={styles.white_btn} 
-                            onClick={handleLogout}
-                            variant="text">
-                            Logout
-                        </Button>
-                    </nav>
+                <nav style={{
+                  backgroundColor:"#778899",
+                  
+                }}>
+                    <div className="logo">Student Research Topics Checking</div>
+                </nav>
                 
                 </div>
 
             {/* create a table */}
-            <Paper className={styles.root}>
-                <Table className={styles.table} style={{ width: 1200 }}>
+            <Paper className={styles.root} style={{marginTop:'50px', marginLeft:"100px", marginRight:"200px"}}>
+                <Table className={styles.table} style={{ width: 1075 }}>
                     <TableHead>
-                        <TableRow>
-                            <TableCell align="right">Group ID</TableCell>
-                            <TableCell align="right">Research Topic</TableCell>
-                            <TableCell align="right">Approved</TableCell>
+                        <TableRow style={{ backgroundColor:"#C0C0C0" }}>
+                            <TableCell align="right"><b>Group ID</b></TableCell>
+                            <TableCell align="right"><b>Research Topic</b></TableCell>
+                            <TableCell align="right"><b>Approved</b></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {data.map(row => {
                             let id = row._id;
                             return (
-                                <TableRow>
+                                <TableRow style={{ backgroundColor:"#F5F5F5"}}>
                                     <TableCell align="right">{row.groupId}</TableCell>
                                     <TableCell align="right">{row.researchTopic}</TableCell>
                                     {/* add a toggle button to a cell */}
@@ -104,7 +98,7 @@ const ApproveResearch = () => {
                                                     .catch(err => console.log(err));
 
                                             }}
-                                            value="checkedA"
+                                            value="checked"
                                             inputProps={label}
                                         />
                                     </TableCell>
@@ -113,10 +107,10 @@ const ApproveResearch = () => {
                             );
                         })}
                     </TableBody>
-                </Table>
-            </Paper>
-            </>
+                </Table>  </Paper>
+          
+            </div>
         );
 }
 
-export default ApproveResearch;
+export default AcceptTopic;

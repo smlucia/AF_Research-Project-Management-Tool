@@ -15,6 +15,11 @@ const studentRequestSupervisorRoute = require("./routes/student/studentRequestSu
 const fileRoutes = require("./routes/file-upload-routes");
 const subRoutes = require("./routes/submissionRoute");
 const path = require("path");
+const panelRoute = require("./routes/panelRoute");
+
+const supervisorRoute = require("./routes/supervisor-route");
+const submissionRoute = require("./routes/su-submit-route");
+
 
 
 // database connection
@@ -34,8 +39,11 @@ app.use("/sub", subRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', fileRoutes.routes);
 
+app.use("/panel-member", panelRoute);
+
+app.use('/supervisor', supervisorRoute);
+app.use('/supervisor', submissionRoute);
+
 
 const port = process.env.PORT || 6005;
 app.listen(port, console.log(`Listening on port ${port}...`));
-
-
