@@ -25,10 +25,13 @@ const studentGroupsSchema = new Schema({
             email: String
         }
     ],
-    academicYear: {
-        type: Number,
-        required: true
-    },
+    panelId: {
+        type: String,
+        required: true,
+        minLength: 3, 
+        maxLength: 5
+    }
+    
    
 }, {timestamps: true});
 

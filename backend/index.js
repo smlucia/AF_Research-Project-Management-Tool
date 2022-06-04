@@ -3,12 +3,15 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const connection = require("./db");
+const path = require("path");
 const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
 const studentGroupRoute = require("./routes/student/studentGroupRoute");
 const studentResearchTopicRoute = require("./routes/student/studentResearchTopicRoute");
 const studentRequestSupervisorRoute = require("./routes/student/studentRequestSupervisorRoute");
-
+const fileRoutes = require("./routes/file-upload-routes");
+const subRoutes = require("./routes/submissionRoute");
+const panelGroupRoutes = require("./routes/panelGroupRoute");
 
 
 // database connection
@@ -24,6 +27,10 @@ app.use("/auth", authRoute);
 app.use("/studentGroup", studentGroupRoute);
 app.use("/researchTopicReg", studentResearchTopicRoute);
 app.use("/requestSupervisor", studentRequestSupervisorRoute);
+app.use("/sub", subRoutes);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api', fileRoutes.routes);
+app.use('/panel', panelGroupRoutes);
 
 
 const port = process.env.PORT || 6005;

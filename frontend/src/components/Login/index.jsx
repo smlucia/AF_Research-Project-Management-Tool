@@ -3,6 +3,7 @@ import axios from "axios";
 import { Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import "../../styles/student/studentResearchTopic.css";
 
 const Login = () => {
 	//login interface modification
@@ -27,9 +28,21 @@ const Login = () => {
 			//handle dashboard navigation according to the user role
 			if (res.usertype === 'student'){
 				window.location = "/studentDashboard";
-			} else if (res.usertype === 'staff')  {
+
+			} else if (res.usertype === 'coSupervisor')  {
 				window.location = "/staffDashboard";
-			} else {
+
+			} else if (res.usertype === 'supervisor')  {
+				window.location = "/staffDashboard";
+
+			} else if (res.usertype === 'admin')  {
+				window.location = "/adhome";
+
+			} else if (res.usertype === 'panelmember')  {
+				window.location = "/staffDashboard";
+			} 
+
+			else {
 				window.location = "/";
 			}
 
@@ -44,7 +57,44 @@ const Login = () => {
 		}
 	};
 
+	const handleHomeSignup = () => {
+		localStorage.removeItem("token");
+		window.location = "/signup";
+	};
+	
+	const handleHomeSignin = () => {
+		localStorage.removeItem("token");
+		window.location = "/login";
+	};
+
+	const handleHome = () => {
+		localStorage.removeItem("token");
+		window.location = "/homepage";
+	};
+	
 	return (
+		<div className="studentResearchTopic">
+		<nav className="studentResearchTopic-nav-bar">
+                <h1></h1>
+				<button
+                    className={styles.signupHome_btn}
+                    onClick={handleHome}
+                    variant="text">
+                    HOME
+                </button>
+                <button
+                    className={styles.homeSigninButton_btn}
+                    onClick={handleHomeSignin}
+                    variant="text">
+                    SIGN IN
+                </button>
+                <button
+                    className={styles.homeSignupButton_btn}
+                    onClick={handleHomeSignup}
+                    variant="text">
+                   SIGN UP
+                </button>
+            </nav>
 		<div className={styles.login_container}>
 			<div className={styles.login_form_container}>
 				<div className={styles.left}>
@@ -87,6 +137,7 @@ const Login = () => {
 					</Link>
 				</div>
 			</div>
+		</div>
 		</div>
 	);
 };

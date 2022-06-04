@@ -1,6 +1,28 @@
 import React from 'react';
 import NavBar from './NavBar';
 import '../styles/HomePage.css'
+import "../styles/student/studentResearchTopic.css";
+import styles from "./Main/styles.module.css";
+
+const handleHome = () => {
+    localStorage.removeItem("token");
+    window.location = "/home";
+};
+
+const handleHomeSignin = () => {
+    localStorage.removeItem("token");
+    window.location = "/login";
+};
+
+const handleHomeSignup = () => {
+    localStorage.removeItem("token");
+    window.location = "/signup";
+};
+
+const handleGetStartBtn = () => {
+    localStorage.removeItem("token");
+    window.location = "/login";
+};
 
 
 const HomePage = () => {
@@ -8,23 +30,27 @@ const HomePage = () => {
         <>
             <div className='backImg'>
 
-                <NavBar />
-
-                <p className='para'>Research Project Management Tool</p>
-
-            </div>
-
-            <div className='para1'>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque. Nunc posuere purus rhoncus pulvinar aliquam. Ut aliquet tristique nisl vitae volutpat. Nulla aliquet porttitor venenatis.</p>
+                {/* <NavBar /> */}
+                <nav className="studentResearchTopic-nav-bar">
+                <h1></h1>
+                <button
+                    className={styles.homeSignin_btn}
+                    onClick={handleHomeSignin}
+                    variant="text">
+                    SIGN IN
+                </button>
+                <button
+                    className={styles.homeSignup_btn}
+                    onClick={handleHomeSignup}
+                    variant="text">
+                   SIGN UP
+                </button>
+            </nav>
 
             </div>
 
             <div className='container'>
-                <button>Get Started</button>
-            </div>
-
-            <div className='para2'>
-                <h4>Contact us form</h4>
+                <button onClick={handleGetStartBtn}>LET'S GET STARTED</button>
             </div>
         </>
     );

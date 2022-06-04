@@ -19,39 +19,29 @@ import StudentRequestSupervisor from "./components/Student/studentRequestSupervi
 import StudentDownloadTemplate from "./components/Student/studentDownloadTemplate";
 import StudentSubmitDocument from "./components/Student/studentSubmitDocument";
 
-//admin route imports
-import AdminHome from './components/admin/AdminHome';
-import NavBar from './components/admin/AdminNavBar';
-import Marking from './components/admin/MarkingSchemePage';
-import Template from './components/admin/TemplatePage';
+//panelmember route imports
 import PanelMember from './components/panelMember/panelMember';
 import ApproveResearch from './components/panelMember/approveResearch';
 import Grade from './components/panelMember/grade';
 
+//admin route imports
+import AdminHome from './components/admin/AdminHome';
+import NavBar from './components/admin/AdminNavBar';
+import Marking from './components/admin/MarkingSchemePage'
+import Template from './components/admin/TemplatePage';
+import StudentList from './components/users/StudentList';
+import EditStudent from './components/users/StudentEdit';
+import StaffList from './components/users/StaffList';
+import EditStaff from './components/users/StaffEdit';
+import ViewUser from './components/users/ViewUser';
+import AddSub from './components/admin/AddSubmission';
+import SubList from './components/admin/SubmissionList';
+import EditSub from './components/admin/EditSubmission';
+import AddPanel from './components/admin/AddPanel';
+import DisplayPanel from './components/admin/DisplayPanelMembers';
+import Panel from './components/admin/DisplayPanel';
+import AllocatePanel from './components/admin/AllocatePanel';
 
-// function App() {
-//     const user = localStorage.getItem("token");
-
-//     return (
-//         <Routes>
-//             {user && <Route path="/" exact element={<Main />} />}
-//             <Route path="/signup" exact element={<Signup />} />
-//             <Route path="/login" exact element={<Login />} />
-//             <Route path="/staffDashboard" exact element={<StaffDashboard />} />
-
-//             {/* student handling */}
-//             <Route path="/studentDashboard" exact element={<StudentDashboard />} />
-//             <Route path="/studentSubmitDocument" exact element={<StudentSubmitDocument />} />
-//             <Route path="/studentResearchTopics" exact element={<StudentResearchTopics />} />
-//             <Route path="/studentRequestSupervisor" exact element={<StudentRequestSupervisor />} />
-//             <Route path="/studentDownloadTemplate" exact element={<StudentDownloadTemplate />} />
-//             <Route path="/studentGroup" exact element={<StudentGroup />} />
-
-//             <Route path="/" element={<Navigate replace to="/login" />} />
-//         </Routes>
-//     );
-
-//import LoginAndSignup from './container/loginAndSignup';
 
 
 const App = () => {
@@ -65,8 +55,8 @@ const App = () => {
                 {/* <HomePage /> */}
 
                 <Routes>
-                    {/* <Route path="/" element={ <Home/> } />
-            <Route path="about" element={ <About/> } /> */}
+                    <Route path="/homepage" element={ <HomePage/> } />
+                    {/* <Route path="about" element={ <About/> } /> */}
 
                     {user && <Route path="/" exact element={<Main />} />}
                     <Route path="/signup" exact element={<Signup />} />
@@ -83,11 +73,26 @@ const App = () => {
 
                     <Route path="/" element={<Navigate replace to="/login" />} />
 
-                    {/* admin routes */}
-                    <Route path="adhome" element={<AdminHome />} />
-                    <Route path="nav" element={<NavBar />} />
-                    <Route path="mark" element={<Marking />} />
-                    <Route path="temp" element={<Template />} />
+                     {/* admin routes */}
+                    <Route path="adhome" element={ <AdminHome/> } />
+                    <Route path="nav" element={ <NavBar/> } />
+                    <Route path="mark" element={ <Marking/> } />
+                    <Route path="temp" element={ <Template/> } />
+                    <Route path="stulist" element={ <StudentList/> } />
+                    <Route path="stuedit/:id" element={ <EditStudent/> } />
+                    <Route path="stafflist" element={ <StaffList/> } />
+                    <Route path="staffedit/:id" element={ <EditStaff/> } />
+                    <Route path="userview/:id" element={ <ViewUser/> } />
+                    <Route path="addsub" element={ <AddSub/> } />
+                    <Route path="sublist" element={ <SubList/> } />
+                    <Route path="subedit/:id" element={ <EditSub/> } />
+                    <Route path="addpanel" element={ <AddPanel/> } />
+                    <Route path="allpanel" element={ <DisplayPanel/> } />
+                    <Route path="displaypanel" element={ <Panel/> } />
+                    <Route path="allocatepanel" element={ <AllocatePanel/> } />
+
+                    {/* panelmember routes */}
+                    
                     <Route path="panelmember" element={<PanelMember />} />
                     <Route path="panelmember/approve-research" element={<ApproveResearch />} />
                     <Route path="panelmember/grade" element={<Grade />} />

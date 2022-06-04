@@ -8,8 +8,7 @@ router.post('/addSub', async (req, res) => {
             type: req.body.type,
             submitTo: req.body.submitTo,
             submitFrom: req.body.submitFrom
-        })
-    
+        }) 
         try {
             const dataToSave = await data.save();
             res.status(200).json(dataToSave)
@@ -17,7 +16,6 @@ router.post('/addSub', async (req, res) => {
         catch (error) {
             res.status(400).json({message: error.message})
         }
-
 });
 
 //Get all Method
@@ -31,6 +29,7 @@ router.get('/getAllSub', async (req, res) => {
     }
 })
 
+
 //Get by ID Method
 router.get('/getOneSub/:id', async (req, res) => {
     try{
@@ -41,7 +40,6 @@ router.get('/getOneSub/:id', async (req, res) => {
         res.status(500).json({message: error.message})
     }
 })
-
 //Update by ID Method
 router.put('/updateSub/:id', async (req, res) => {
     try {
@@ -52,14 +50,12 @@ router.put('/updateSub/:id', async (req, res) => {
         const result = await subModel.findByIdAndUpdate(
             id, updatedData, options
         )
-
         res.send(result)
     }
     catch (error) {
         res.status(400).json({ message: error.message })
     }
 })
-
 //Delete by ID Method
 router.delete('/deleteSub/:id', async (req, res) => {
     try {
@@ -69,7 +65,5 @@ router.delete('/deleteSub/:id', async (req, res) => {
     }
     catch (error) {
         res.status(400).json({ message: error.message })
-    }
-})
-
+    }})
 module.exports = router;

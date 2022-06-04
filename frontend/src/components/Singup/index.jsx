@@ -8,6 +8,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import "../../styles/student/studentResearchTopic.css";
 
 const Signup = () => {
 	//signup interface modification
@@ -51,7 +52,45 @@ const Signup = () => {
 		}
 	};
 
+	const handleHomeSignup = () => {
+		localStorage.removeItem("token");
+		window.location = "/signup";
+	};
+	
+	const handleHomeSignin = () => {
+		localStorage.removeItem("token");
+		window.location = "/login";
+	};
+
+	const handleHome = () => {
+		localStorage.removeItem("token");
+		window.location = "/home";
+	};
+	
+
 	return (
+		<div className="studentResearchTopic">
+		<nav className="studentResearchTopic-nav-bar">
+                <h1></h1>
+				<button
+                    className={styles.signupHome_btn}
+                    onClick={handleHome}
+                    variant="text">
+                    HOME
+                </button>
+                <button
+                    className={styles.homeSigninButton_btn}
+                    onClick={handleHomeSignin}
+                    variant="text">
+                    SIGN IN
+                </button>
+                <button
+                    className={styles.homeSignupButton_btn}
+                    onClick={handleHomeSignup}
+                    variant="text">
+                   SIGN UP
+                </button>
+            </nav>
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
@@ -138,6 +177,7 @@ const Signup = () => {
 					</form>
 				</div>
 			</div>
+		</div>
 		</div>
 	);
 };

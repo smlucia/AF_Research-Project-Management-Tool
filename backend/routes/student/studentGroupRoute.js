@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
     const leaderName = req.body.leaderName;
     const leaderEmail = req.body.leaderEmail;
     const otherMembers = req.body.otherMembers;
-    const academicYear = req.body.academicYear;
+  
 
     const regStudentGroup = await StudentGroup.findOne({ groupId: req.body.groupId });
     if (regStudentGroup)
@@ -26,12 +26,47 @@ router.post("/", async (req, res) => {
         leaderName,
         leaderEmail,
         otherMembers,
-        academicYear
+    
     });
 
     newStudentGroup.save()
         .then(() => res.json('New student group added!'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+
+router.get("/getAllStudentGroups", async (req, res) => {
+
+    try{
+
+        const data = await StudentGroup.find();
+
+        res.status(200).send(data);
+
+
+
+    }catch(error){
+
+        res.status(400).send(error.message);
+
+    }
+
+});
+
+router.put('/updateStudentGroups/:groupId', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const updatedData = req.body;
+        const options = { new: true };
+
+        const result = await StudentGroup.findByIdAndUpdate(
+            id, updatedData, options
+        )
+
+        res.send(result)
+    }
+    catch (error) {
+        res.status(400).json({ message: error.message })
+    }
+})
 
 module.exports = router;
