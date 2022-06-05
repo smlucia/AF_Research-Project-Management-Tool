@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
  
 const Record = (props) => (
  <tr>
@@ -53,10 +53,18 @@ export default function RecordList() {
      method: "DELETE"
    });
  
+   window.alert(`Deleted Successfully`);
    const newRecords = records.filter((el) => el._id !== id);
    setRecords(newRecords);
  }
 
+
+ const navigate = useNavigate();
+
+ const navigateToAddSub = () => {
+    // 👇️ navigate to /contacts
+    navigate('/adhome');
+  };
 
  
  // This method will map out the records on the table
@@ -80,7 +88,7 @@ export default function RecordList() {
    <div style={{
     backgroundImage: 
 "url('https://t3.ftcdn.net/jpg/05/00/34/58/360_F_500345899_4OqmtspFst6SRnNQvLj7h7TfKOrBwTer.jpg')",
-    height: "auto",
+    height: "200vh",
     position: "absolute",
     left: "0",
     width: "100%",
@@ -92,7 +100,17 @@ export default function RecordList() {
             margin:"80px auto",
             
             
+            
         }}>
+            <button  className="btn btn-primary"
+                    style={{
+                        color:"white",
+                        fontSize: "20px",
+                        padding: "6px 10px",
+                        //backgroundColor: "#0074B7",
+                        
+                    }}
+                    onClick={navigateToAddSub}> Back to Home</button>
             <h2 style={{textAlign: "center",margin:"30px auto"}}>Staff List</h2>
      
             <table className="table table-striped" style={{ marginTop: 20,

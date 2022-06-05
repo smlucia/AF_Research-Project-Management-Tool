@@ -36,7 +36,6 @@ router.get("/getAllUsers", async (req, res) => {
     }
 });
 
-
 //get specific user type
 router.get("/getUsers", async (req, res) => {
 	try{
@@ -46,13 +45,11 @@ router.get("/getUsers", async (req, res) => {
 		}
         const data = await User.find(query);
         res.status(200).send(data);
-
     }catch(error){
         res.status(400).send(error.message);
     }
 
 });
-
 
 //get one user
 router.get("/getOneUser/:id", async (req, res) => {

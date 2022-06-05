@@ -18,7 +18,7 @@ nav {
     justify-content: space-around;
     min-height: 12vh;
     align-items: center;
-    background-color: #6990ca;
+    background-color: #3bb19b;
     
 }
 
@@ -41,35 +41,5 @@ nav .nav-links a:hover{
     color: black;
 }
 
-.sidenav {
-    height: 100%;
-    width: 150px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #6990ca;
-    overflow-x: hidden;
-    padding-top: 130px;
-  }
-  
-  .sidenav a {
-    padding: 25px 8px 28px 24px;
-    text-decoration: none;
-    font-size: 25px;
-    color: white;
-    display: block;
-    cursor: pointer;
-  }
-  
-  .sidenav a:hover {
-    color: black;
-  }
-  
-
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
 
   

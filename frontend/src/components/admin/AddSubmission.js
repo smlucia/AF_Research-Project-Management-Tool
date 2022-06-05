@@ -36,13 +36,13 @@ export default function Create() {
      window.alert(error);
      return;
    });
- 
+   window.alert(`Added Successfully`);
    setForm({ title: "",
             deadline: "",
             type: "",
             submitTo: "",
             submitFrom: "", });
-   navigate("/");
+   navigate("/sublist");
  }
  
  // This following section will display the form that takes the input from the user.

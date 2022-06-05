@@ -51,6 +51,8 @@ export default function Edit() {
      firstName: form.firstName,
      lastName: form.lastName,
      email: form.email,
+     mobile: form.mobile
+
    };
  
    // This will send a post request to update the data in the database.
@@ -72,7 +74,7 @@ export default function Edit() {
   <div style={{
     backgroundImage: 
 "url('https://t3.ftcdn.net/jpg/05/00/34/58/360_F_500345899_4OqmtspFst6SRnNQvLj7h7TfKOrBwTer.jpg')",
-    height: "auto",
+    height: "100vh",
     position: "absolute",
     left: "0",
     width: "100%",
@@ -131,7 +133,7 @@ export default function Edit() {
                 className="form-control form-control-lg"
                 id="mobile"
                 value={form.mobile}
-                onChange={(e) => updateForm({ email: e.target.value })}
+                onChange={(e) => updateForm({ mobile: e.target.value })}
                 />
             </div>
       

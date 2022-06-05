@@ -28,7 +28,7 @@ const Login = () => {
 			//handle dashboard navigation according to the user role
 			if (res.usertype === 'student'){
 				window.location = "/studentHomePage";
-
+				window.location = "/studentDashboard";
 			} else if (res.usertype === 'coSupervisor')  {
 				window.location = "/staffDashboard";
 
@@ -41,12 +41,16 @@ const Login = () => {
 			} else if (res.usertype === 'panelmember')  {
 				window.location = "/staffDashboard";
 			} 
+
+
+
 			else if (res.usertype === 'panelmember')  {
 				window.location = "/panelmember";
 			}
 			else if (res.usertype === 'supervisor')  {
 				window.location = "/supervisorDashboard";
 			}
+
 			else {
 				window.location = "/";
 			}
@@ -75,6 +79,7 @@ const Login = () => {
 	const handleHome = () => {
 		localStorage.removeItem("token");
 		window.location = "/home";
+		window.location = "/homepage";
 	};
 	
 	return (

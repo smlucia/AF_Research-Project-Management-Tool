@@ -30,6 +30,9 @@ const studentGroupsSchema = new Schema({
         required: true,
         default: 'none'
     },
+        minLength: 3, 
+        maxLength: 5
+    }
    
 }, {timestamps: true});
 

@@ -133,7 +133,7 @@ export default function Edit() {
                 className="form-control form-control-lg"
                 id="mobile"
                 value={form.mobile}
-                onChange={(e) => updateForm({ email: e.target.value })}
+                onChange={(e) => updateForm({ mobile: e.target.value })}
                 />
             </div>
 
