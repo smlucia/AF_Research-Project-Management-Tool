@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
  
 const Record = (props) => (
  <tr>
@@ -17,8 +17,8 @@ const Record = (props) => (
        }}
      >
        Delete
-     </button> |
-     <Link className="btn btn-primary" style={{padding: "6px 25px",fontSize: "17px"}} to={`/userview/${props.record._id}`}>View</Link>
+     </button> 
+     
    </td>
  </tr>
 );
@@ -45,6 +45,13 @@ export default function RecordList() {
  
    return;
  }, [records.length]);
+
+ const navigate = useNavigate();
+
+ const navigateToAddSub = () => {
+    // 👇️ navigate to /contacts
+    navigate('/adhome');
+  };
  
  // This method will delete a record
  async function deleteRecord(id) {
@@ -52,6 +59,7 @@ export default function RecordList() {
      method: "DELETE"
    });
  
+   window.alert(`Deleted Successfully`);
    const newRecords = records.filter((el) => el._id !== id);
    setRecords(newRecords);
  }
@@ -87,6 +95,15 @@ export default function RecordList() {
             
             
         }}>
+          <button  className="btn btn-primary"
+                    style={{
+                        color:"white",
+                        fontSize: "20px",
+                        padding: "6px 10px",
+                        //backgroundColor: "#0074B7",
+                        
+                    }}
+                    onClick={navigateToAddSub}> Back to Home</button>
             <h2 style={{textAlign: "center",margin:"30px auto"}}>Student List</h2>
             <table className="table table-striped" style={{ marginTop: 20,
             borderWidth:"1px",

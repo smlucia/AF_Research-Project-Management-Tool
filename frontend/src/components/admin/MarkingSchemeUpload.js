@@ -7,7 +7,7 @@ import 'react-circular-progressbar/dist/styles.css'
 
 const MarkingSchemeUpload = (props) => {
 
-  const[singleFile , setSingleFile] = useState('');
+  //const[singleFile , setSingleFile] = useState('');
   const[multipleFiles , setMultipleFiles] = useState('');
   const[title , setTitle] = useState('');
   const[submitTo , setSubmitTo] = useState('');
@@ -15,21 +15,21 @@ const MarkingSchemeUpload = (props) => {
   const[singleProgress , setSingleProgress] = useState(0);
   const[multipleProgress , setMultipleProgress] = useState(0);
  
-  const SingleFileChange = (e) => {
-    setSingleFile(e.target.files[0]);
-  }
+  // const SingleFileChange = (e) => {
+  //   setSingleFile(e.target.files[0]);
+  // }
 
   const MultipleFileChange = (e) => {
     setMultipleFiles(e.target.files);
   }
 
-  const singleFileOptions = {
-    onUploadProgress: (progressEvent) => {
-      const {loaded , total} = progressEvent;
-      const percentage = Math.floor(((loaded/1000) * 100) / (total/1000));
-      setSingleProgress(percentage);
-    }
-  }
+  // const singleFileOptions = {
+  //   onUploadProgress: (progressEvent) => {
+  //     const {loaded , total} = progressEvent;
+  //     const percentage = Math.floor(((loaded/1000) * 100) / (total/1000));
+  //     setSingleProgress(percentage);
+  //   }
+  // }
 
   const multipleFileOptions = {
     onUploadProgress: (progressEvent) => {
@@ -39,12 +39,12 @@ const MarkingSchemeUpload = (props) => {
     }
   }
 
-  const UploadSingleFile = async () => {
-      const formData = new FormData();
-      formData.append('file',singleFile );
-      await singleFileUpload(formData, singleFileOptions);
-      props.getSingle();
-  }
+  // const UploadSingleFile = async () => {
+  //     const formData = new FormData();
+  //     formData.append('file',singleFile );
+  //     await singleFileUpload(formData, singleFileOptions);
+  //     props.getSingle();
+  // }
 
   const UploadMultipleFile = async () => {
     const formData = new FormData();
@@ -79,15 +79,15 @@ const MarkingSchemeUpload = (props) => {
         
         
         <div className=" border border-light h-100 d-inline-block w-75 p-3">
-              <div className="row mt-3">
+              {/* <div className="row mt-3">
                 <div className="col-6">
                   <div className='form-group'>
                   <h5><label>Select Single File</label></h5>
                   <input type="file" className='form-control form-control-lg' onChange={(e) => SingleFileChange(e)}/>
                   </div>
                   </div>  
-              </div>
-              <div className="row mt-3">
+              </div> */}
+              {/* <div className="row mt-3">
                 <div className="col-6">
                     <button type='button' className='btn btn-danger' onClick={() => UploadSingleFile()}>Upload</button>
                   </div>
@@ -108,7 +108,7 @@ const MarkingSchemeUpload = (props) => {
 
                     })} />
                   </div>
-              </div>
+              </div> */}
              
 
             
