@@ -27,8 +27,8 @@ const Login = () => {
 			
 			//handle dashboard navigation according to the user role
 			if (res.usertype === 'student'){
+				window.location = "/studentHomePage";
 				window.location = "/studentDashboard";
-
 			} else if (res.usertype === 'coSupervisor')  {
 				window.location = "/staffDashboard";
 
@@ -78,6 +78,7 @@ const Login = () => {
 
 	const handleHome = () => {
 		localStorage.removeItem("token");
+		window.location = "/home";
 		window.location = "/homepage";
 	};
 	

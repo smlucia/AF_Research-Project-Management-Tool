@@ -26,3 +26,26 @@
 	align-items: center;
 	justify-content: space-between;
 }
+
+.researchNavigation {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+	font-size: 30px;
+	font-weight: bolder;
+	text-align: left;
+}
+
+.researchNavigation a {
+    cursor: pointer;
+    color: white;
+}
+
+/* .navigationListItems {
+	
+} */
+
+.researchNavigation a:hover {
+    /* border-bottom: 1px solid #fff; */
+    color: black;
+}

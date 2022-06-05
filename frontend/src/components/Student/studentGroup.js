@@ -1,156 +1,159 @@
-import React, { useState } from 'react';
-import axios from "axios";
-import "../../styles/student/studentResearchTopic.css";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../../styles/student/studentReqSupervisor.css";
 import styles from "../Main/styles.module.css";
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Paper from '@mui/material/Paper';
-import Alert from '@mui/material/Alert';
+import Box from '@mui/material/Box';
+//import AllPanels from './DisplayPanel';
+
+export default function addStudentGroup() {
+    const [groupId, setGroupId] = useState("");
+    const [groupName, setGroupName] = useState("");
+    const [leaderName, setLeaderName] = useState("");
+    const [leaderEmail, setLeaderEmail] = useState("");
+    const [otherMembers, setOtherMembers] = useState([]);
 
 
-const studentGroup = () => {
-    // return (
-    //     <div> Inside Research Topic </div>
-    // );
-    const handleStudentDashboard = () => {
-        localStorage.removeItem("token");
-        window.location = "/studentDashboard";
-    };
-
-    //interface modifications
-    const paperStyle = { margin: "20px auto", width: 900 }
-
-    const [data, setData] = useState({
-        groupId: "",
-        leaderEmail: "",
-        researchTopic: "",
-        academicYear: "",
-    });
-
-    const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleChange = ({ currentTarget: input }) => {
-        setData({ ...data, [input.name]: input.value });
-    };
+    async function addStudentGroup() {
+        let item = {
+            groupId,
+            groupName,
+            leaderName,
+            leaderEmail,
+            otherMembers
+        };
 
-    const handleSuccessAlert = () => {
-        return (
-            <Alert severity="success" color="info">
-                This is a success alert — check it out!
-            </Alert>
-        );
+        await fetch("http://localhost:6005/studentGroup", {
+            method: "POST",
+            body: JSON.stringify(item),
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+        });
+        window.alert(`New group created successfully!`);
+        navigate.push("/");
+        //   window.location.reload();
     }
 
-    const handleResearchTopicSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const url = "http://localhost:6005/researchTopicReg";
-            const { data: res } = await axios.post(url, data);
-            navigate("/studentDashboard");
-            console.log(res.message);
-        } catch (error) {
-            if (
-                error.response &&
-                error.response.status >= 400 &&
-                error.response.status <= 500
-            ) {
-                setError(error.response.data.message);
-            }
-        }
+    const handleStudentDashboard = () => {
+        localStorage.removeItem("token");
+        window.location = "/studentHomePage";
     };
 
+    const handleHome = () => {
+        localStorage.removeItem("token");
+        window.location = "/home";
+    };
+
+    const paperStyle = { marginLeft: 180, width: 1000, marginTop: -80 }
+
     return (
-        <div className="studentResearchTopic">
-            <nav className="studentResearchTopic-nav-bar">
+        <div className="requestSupervisor">
+            <nav className={styles.navbar}>
                 <h1></h1>
+                <button
+                    className={styles.home_btn}
+                    onClick={handleHome}
+                    variant="text">
+                    HOME
+                </button>
                 <button
                     className={styles.white_btn}
                     onClick={handleStudentDashboard}
                     variant="text">
                     DASHBOARD
                 </button>
+                
             </nav>
-
-            <Paper elevation={5} style={paperStyle}>
-                <Card sx={{ display: 'flex', marginTop: 10 }}>
+            <Paper elevation={10} style={paperStyle}>
+                <Card sx={{ display: 'flex', marginTop: 15 }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <CardContent sx={{ flex: '1 0 auto' }}>
-                            <Typography component="div" variant="h5" align='center'>
-                                REGISTER RESEARCH TOPIC
-                            </Typography>
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    flexDirection: 'column',
-                                    width: 400,
-                                    '& > :not(style)': { m: 1 },
-                                }}
-                            >
-                                <TextField
-                                    id="outlined-basic"
-                                    label="Group ID"
-                                    variant="outlined"
-                                    fullWidth
-                                    name='groupId'
-                                    onChange={handleChange}
-                                    value={data.groupId}
-                                    required />
+                            <h2 style={{ textAlign: "center", margin: "40px auto", }}>CREATE NEW STUDENT GROUP</h2>
+                            {/* <div style={{
+                width: "700px",
+                margin: "30px auto",
 
-                                <TextField
-                                    id="outlined-basic"
-                                    label="Leader Email"
-                                    variant="outlined"
-                                    fullWidth
-                                    name='leaderEmail'
-                                    onChange={handleChange}
-                                    value={data.leaderEmail}
-                                    required />
+            }}> */}
+                            <label htmlFor="groupID" style={{ fontSize: "20px", color: "black" }}>Group ID: </label>
+                            <input
+                                type="text"
+                                onChange={e => setGroupId(e.target.value)}
+                                className="form-control"
+                                placeholder="Group ID"
+                            />
+                            <br />
 
-                                <TextField
-                                    id="outlined-basic"
-                                    label="Research Topic"
-                                    variant="outlined"
-                                    fullWidth
-                                    name='researchTopic'
-                                    onChange={handleChange}
-                                    value={data.researchTopic}
-                                    required />
+                            <label htmlFor="groupName" style={{ fontSize: "20px", color: "black" }}>Group Name: </label>
+                            <input
+                                type="text"
+                                onChange={e => setGroupName(e.target.value)}
+                                className="form-control"
+                                placeholder="Group Name"
+                            />
+                            <br />
 
-                                <TextField
-                                    id="outlined-basic"
-                                    label="Academic Year"
-                                    variant="outlined"
-                                    fullWidth
-                                    name='academicYear'
-                                    onChange={handleChange}
-                                    value={data.academicYear}
-                                    required />
-                                {error && <div className="error_msg">{error}</div>}
-                                <Button variant="contained" fullWidth onClick={handleResearchTopicSubmit}>SUBMIT</Button>
+                            <label htmlFor="leaderName" style={{ fontSize: "20px", color: "black" }}>Leader Name: </label>
+                            <input
+                                type="text"
+                                onChange={e => setLeaderName(e.target.value)}
+                                className="form-control"
+                                placeholder="Leader Name"
+                            />
+                            <br />
 
-                            </Box>
+                            <label htmlFor="leaderEmail" style={{ fontSize: "20px", color: "black" }}>Leader Email: </label>
+                            <input
+                                type="text"
+                                onChange={e => setLeaderEmail(e.target.value)}
+                                className="form-control"
+                                placeholder="Leader Email"
+                            />
+                            <br />
 
+                            <label htmlFor="otherMembers" style={{ fontSize: "20px", color: "black" }}>Other Members: </label>
+                            <input
+                                type="text"
+                                //parse the string input
+                                onChange={e => setOtherMembers(JSON.parse(e.target.value))}
+                                className="form-control"
+                                //notice the array bracket '[' and ']'
+                                placeholder='[{"name": "", "email": ""}, {"name": "", "email": ""}]'
+                            />
+
+                            <br />
+
+                            <button
+                                onClick={addStudentGroup}
+                                className="btn btn-primary"
+                                style={{
+                                    backgroundColor: 'darkblue',
+                                    border: 0,
+                                    width: 200,
+                                    marginLeft: 110
+                                }}>
+                                CREATE GROUP
+                            </button>
+                            {/* </div> */}
+
+                            {/* <AllPanels/> */}
                         </CardContent>
                     </Box>
                     <CardMedia
                         component="img"
-                        sx={{ width: 500 }}
+                        sx={{ width: 515 }}
                         marginLeft="0"
-                        image="https://leverageedublog.s3.ap-south-1.amazonaws.com/blog/wp-content/uploads/2020/08/11195303/research-project.jpg"
+                        image="https://st2.depositphotos.com/1763191/12379/v/950/depositphotos_123793510-stock-illustration-lots-of-children-reading-and.jpg"
                         alt="Live from space album cover"
                     />
                 </Card>
             </Paper>
         </div>
     );
-};
-
-export default studentGroup;
+}

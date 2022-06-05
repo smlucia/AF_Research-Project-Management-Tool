@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 //import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 const studentDashboard = () => {
@@ -117,24 +118,32 @@ const studentDashboard = () => {
     const imageButtonHandling = () => {
 
         if(images.title = 'STUDENT GROUP') {
-            window.location = "/studentGroup";
-
-        }else if (images.title = 'RESEARCH TOPICS'){
-            window.location = "/studentResearchTopics";
-
-        }else if (images.title = 'SUBMIT DOCUMENTS'){
-            window.location = "/studentSubmitDocument";
-
-        }else if (images.title = 'DOWNLOAD TEMPLATE'){
-            window.location = "/studentDownloadTemplate";
-
-        }else if (images.title = 'REQUEST SUPERVISORS'){
-            window.location = "/studentRequestSupervisor";
-
-        }else{
-            window.location = "/";
+                window.location = "/studentGroup";}
+        if(images.title = 'RESEARCH TOPICS'){
+            windows.location = "/studentResearchTopics"
         }
 
+        // }if (images[1]){
+        //     window.location = "/studentResearchTopics";
+
+        // }if (images[2]){
+        //     window.location = "/studentDocSubmissionPage";
+
+        // }if (images[3]){
+        //     window.location = "/studentDownloadTemplate";
+
+        // }if (images[4]){
+        //     window.location = "/studentRequestSupervisor";
+
+        // }else{
+        //     window.location = "/";
+        // }
+
+    };
+
+    const handleHome = () => {
+        localStorage.removeItem("token");
+        window.location = "/home";
     };
 
     return (
@@ -142,26 +151,34 @@ const studentDashboard = () => {
             <nav className={styles.navbar}>
                 <h1>Welcome {localStorage.getItem("username")}</h1>
                 <button
+                    className={styles.homeStudentDash_btn}
+                    onClick={handleHome}>
+                    HOME
+                </button>
+                <button
                     className={styles.white_btn}
                     onClick={handleLogout}>
                     LOGOUT
                 </button>
             </nav>
 
+        
             <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%' }}>
                 {images.map((image) => (
                     <ImageButton
+                    
                         focusRipple
                         key={image.title}
                         style={{
                             width: image.width,
                         }}
-                        onClick={imageButtonHandling}
 
                     >
+                        
                         <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
                         <ImageBackdrop className="MuiImageBackdrop-root" />
                         <Image>
+                        {/* <Button variant="text" onClick={imageButtonHandling}>Text</Button> */}
                             <Typography
 
                                 component="span"

@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const { StudentRequestSupervisor } = require("../../models/student/studentRequestSupervisor");
+const { StudentGroup } = require("../../models/student/studentGroupRegister");
 const bcrypt = require("bcrypt");
 
 //request supervisor
 router.post("/", async (req, res) => {
     const groupId = req.body.groupId;
-    const academicYear = req.body.academicYear;
     const leaderEmail = req.body.leaderEmail;
     const supervisorType = req.body.supervisorType;
     const supervisorName = req.body.supervisorName;
@@ -17,11 +17,16 @@ router.post("/", async (req, res) => {
             .status(409)
             .send({ message: "Your group already requested a supervisor!" });
 
+    const checkGroup = await StudentGroup.findOne({ groupId: req.body.groupId });
+    if (!checkGroup)
+        return res
+            .status(409)
+            .send({ message: "Your group is not registered! Please register your group and try again!" });
+
     const salt = await bcrypt.genSalt(Number(process.env.SALT));
 
     const newStudentRequestSupervisor = new StudentRequestSupervisor({
         groupId,
-        academicYear,
         leaderEmail,
         supervisorType,
         supervisorName,

@@ -79,7 +79,7 @@ router.put('/updateOneUser/:id', async (req, res) => {
     catch (error) {
         res.status(400).json({ message: error.message })
     }
-})
+});
 
 //Delete by one user
 router.delete('/deleteOneUser/:id', async (req, res) => {
@@ -91,13 +91,6 @@ router.delete('/deleteOneUser/:id', async (req, res) => {
     catch (error) {
         res.status(400).json({ message: error.message })
     }
-})
-
-
-
-
-
-
-
+});
 
 module.exports = router;

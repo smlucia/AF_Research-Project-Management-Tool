@@ -5,10 +5,6 @@ const studentRequestSupervisorSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
-	academicYear: { 
-        type: Number, 
-        required: true 
-    },
 	leaderEmail: { 
         type: String, 
         required: true 

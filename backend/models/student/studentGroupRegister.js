@@ -28,10 +28,11 @@ const studentGroupsSchema = new Schema({
     panelId: {
         type: String,
         required: true,
+        default: 'none'
+    },
         minLength: 3, 
         maxLength: 5
     }
-    
    
 }, {timestamps: true});
 
